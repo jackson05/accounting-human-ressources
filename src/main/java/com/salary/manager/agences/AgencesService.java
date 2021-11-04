@@ -24,13 +24,13 @@ public class AgencesService {
     	return agencesRepository.findById(id).orElse(null);
     }
     
-    public Agence getByNameAgence(String name) {
-    	return agencesRepository.findByName(name);
+    public Agence getByDesignationAgence(String designationAgence) {
+    	return agencesRepository.findByDesignationAgence(designationAgence);
     }
     
     public Agence updateAgence(int id, Agence agence) {
     	Agence oldAgence = agencesRepository.findById(id).orElse(null);
-    	oldAgence.setName(agence.getName());
+    	oldAgence.setDesignationAgence(agence.getDesignationAgence());
     	oldAgence.setUserModifiedAgence(agence.getUserModifiedAgence());
     	oldAgence.setDateModifiedAgence(agence.getDateModifiedAgence()); 
     	agencesRepository.save(oldAgence);

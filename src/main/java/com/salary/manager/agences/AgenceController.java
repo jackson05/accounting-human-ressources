@@ -31,7 +31,7 @@ public class AgenceController {
 	
 	@RequestMapping(value = "/agence/name/{name}", method = RequestMethod.GET) 
 	public Agence agenceByName(@PathVariable String name) {
-		return agencesService.getByNameAgence(name);
+		return agencesService.getByDesignationAgence(name);
 	}
 	
 	@RequestMapping(value = "/agence/id/{id}", method = RequestMethod.GET) 

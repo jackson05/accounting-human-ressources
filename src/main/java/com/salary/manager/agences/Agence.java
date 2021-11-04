@@ -11,7 +11,7 @@ public class Agence {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
+	private String designationAgence;
 	private int userCreatedAgence;
 	private int userModifiedAgence;
 	private String dateCreatedAgence;
@@ -27,7 +27,7 @@ public class Agence {
 			String dateModifiedAgence) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.designationAgence = name;
 		this.userCreatedAgence = userCreatedAgence;
 		this.userModifiedAgence = userModifiedAgence;
 		this.dateCreatedAgence = dateCreatedAgence;
@@ -45,13 +45,13 @@ public class Agence {
 	}
 
 
-	public String getName() {
-		return name;
+	public String getDesignationAgence() {
+		return designationAgence;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDesignationAgence(String name) {
+		this.designationAgence = name;
 	}
 
 
