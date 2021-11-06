@@ -55,12 +55,13 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
-		</dependency-->
+		</dependency
 		<dependency>
 		    <groupId>org.javassist</groupId>
 		    <artifactId>javassist</artifactId>
 		    <version>3.23.1-GA</version>
 		</dependency>
+		-->
 		
 	</dependencies>
 
