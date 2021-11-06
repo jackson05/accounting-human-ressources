@@ -22,7 +22,7 @@ public class Services {
 	@ManyToOne(cascade=CascadeType.ALL, targetEntity=Departement.class) 
 //	@JoinColumn(name="id", referencedColumnName = "id", insertable = false, updatable = false)  
 //	@SortNatural
-	private int departementService;
+	private Departement departementService;
 	
 	private String designationServices;
 	private int userCreatedServices;
@@ -53,12 +53,12 @@ public class Services {
 	}
 
 
-	public int getDepartementService() {
+	public Departement getDepartementService() {
 		return departementService;
 	}
 
 
-	public void setDepartementService(int departementService) {
+	public void setDepartementService(Departement departementService) {
 		this.departementService = departementService;
 	}
 
