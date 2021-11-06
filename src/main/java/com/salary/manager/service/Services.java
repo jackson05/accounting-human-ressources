@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
  
 
 import com.salary.manager.departement.Departement;
@@ -19,9 +18,7 @@ public class Services {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
-	@ManyToOne(cascade=CascadeType.ALL, targetEntity=Departement.class) 
-//	@JoinColumn(name="id", referencedColumnName = "id", insertable = false, updatable = false)  
-//	@SortNatural
+	@ManyToOne(cascade=CascadeType.ALL, targetEntity=Departement.class)
 	private Departement departementService;
 	
 	private String designationServices;
