@@ -12,11 +12,11 @@ public class Assurance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String designationAgence;
-	private int userCreatedAgence;
-	private int userModifiedAgence;
-	private String dateCreatedAgence;
-	private String dateModifiedAgence;
+	private String designationAssurance;
+	private int userCreatedAssurance;
+	private int userModifiedAssurance;
+	private String dateCreatedAssurance;
+	private String dateModifiedAssurance;
 	
 	
 	public Assurance() {
@@ -24,15 +24,15 @@ public class Assurance {
 	}
 
 
-	public Assurance(int id, String name, int userCreatedAgence, int userModifiedAgence, String dateCreatedAgence,
-			String dateModifiedAgence) {
+	public Assurance(int id, String name, int userCreatedAssurance, int userModifiedAssurance, String dateCreatedAssurance,
+			String dateModifiedAssurance) {
 		super();
 		this.id = id;
-		this.designationAgence = name;
-		this.userCreatedAgence = userCreatedAgence;
-		this.userModifiedAgence = userModifiedAgence;
-		this.dateCreatedAgence = dateCreatedAgence;
-		this.dateModifiedAgence = dateModifiedAgence;
+		this.designationAssurance = name;
+		this.userCreatedAssurance = userCreatedAssurance;
+		this.userModifiedAssurance = userModifiedAssurance;
+		this.dateCreatedAssurance = dateCreatedAssurance;
+		this.dateModifiedAssurance = dateModifiedAssurance;
 	}
 
 
@@ -46,53 +46,53 @@ public class Assurance {
 	}
 
 
-	public String getDesignationAgence() {
-		return designationAgence;
+	public String getDesignationAssurance() {
+		return designationAssurance;
 	}
 
 
-	public void setDesignationAgence(String name) {
-		this.designationAgence = name;
+	public void setDesignationAssurance(String name) {
+		this.designationAssurance = name;
 	}
 
 
-	public int getUserCreatedAgence() {
-		return userCreatedAgence;
+	public int getUserCreatedAssurance() {
+		return userCreatedAssurance;
 	}
 
 
-	public void setUserCreatedAgence(int userCreatedAgence) {
-		this.userCreatedAgence = userCreatedAgence;
+	public void setUserCreatedAssurance(int userCreatedAssurance) {
+		this.userCreatedAssurance = userCreatedAssurance;
 	}
 
 
-	public int getUserModifiedAgence() {
-		return userModifiedAgence;
+	public int getUserModifiedAssurance() {
+		return userModifiedAssurance;
 	}
 
 
-	public void setUserModifiedAgence(int userModifiedAgence) {
-		this.userModifiedAgence = userModifiedAgence;
+	public void setUserModifiedAssurance(int userModifiedAssurance) {
+		this.userModifiedAssurance = userModifiedAssurance;
 	}
 
 
-	public String getDateCreatedAgence() {
-		return dateCreatedAgence;
+	public String getDateCreatedAssurance() {
+		return dateCreatedAssurance;
 	}
 
 
-	public void setDateCreatedAgence(String dateCreatedAgence) {
-		this.dateCreatedAgence = dateCreatedAgence;
+	public void setDateCreatedAssurance(String dateCreatedAssurance) {
+		this.dateCreatedAssurance = dateCreatedAssurance;
 	}
 
 
-	public String getDateModifiedAgence() {
-		return dateModifiedAgence;
+	public String getDateModifiedAssurance() {
+		return dateModifiedAssurance;
 	}
 
 
-	public void setDateModifiedAgence(String dateModifiedAgence) {
-		this.dateModifiedAgence = dateModifiedAgence;
+	public void setDateModifiedAssurance(String dateModifiedAssurance) {
+		this.dateModifiedAssurance = dateModifiedAssurance;
 	}
 
  
