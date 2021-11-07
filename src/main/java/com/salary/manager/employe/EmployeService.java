@@ -1,4 +1,4 @@
-package com.salary.manager.employes;
+package com.salary.manager.employe;
 
 import java.util.List;
 
@@ -6,34 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmployeServices {
+public class EmployeService {
 	
 	@Autowired
-	private EmployesRepository employesRepository;
-
+	private EmployesRepositorie employesRepositorie;
+	
 	public Employe addEmploye(Employe employe) {
-		employesRepository.save(employe);
+		employesRepositorie.save(employe);
 		return employe;
 	}
 	
 	public List<Employe> addListEmploye(List<Employe> employe) {
-		return employesRepository.saveAll(employe);
+		return employesRepositorie.saveAll(employe);
 	}
 	
 	public List<Employe> getAllEmploye(){
-		return employesRepository.findAll();
+		return employesRepositorie.findAll();
 	}
 	
 	public Employe getEmployeByID(int id) {
-		return employesRepository.findById(id).orElse(null);
+		return employesRepositorie.findById(id).orElse(null);
 	}
 	
 	public Employe getEmployeByName(String name) {
-		return employesRepository.findEmployeByName(name);
+		return employesRepositorie.findEmployeByNom(name);
 	}
 	
 	public Employe updateEmploye(int id,Employe employe) {
-		Employe oldData = employesRepository.findById(id).orElse(null);
+		Employe oldData = employesRepositorie.findById(id).orElse(null);
 		oldData.setAgenceId(employe.getAgenceId());
 		oldData.setAnneeNaissance(employe.getAnneeNaissance());
 		oldData.setBanqueId(employe.getBanqueId());
@@ -64,7 +64,11 @@ public class EmployeServices {
 		oldData.setTelephone(employe.getTelephone());
 		oldData.setUserModified(employe.getUserModified());
 		
-		employesRepository.save(oldData);
+		employesRepositorie.save(oldData);
 		return employe;
+	}
+	
+	public void deleteEmploye(int id) {
+		employesRepositorie.deleteById(id);
 	}
 }

@@ -19,7 +19,7 @@ public class ServicesController {
 	private ServicesService ServicesService;
 	 
 
-	@RequestMapping(value = "/service/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/service", method = RequestMethod.POST)
 	public Services addServices(@RequestBody Services Services) { 
 		return ServicesService.addServices(Services);
 	}
@@ -44,7 +44,7 @@ public class ServicesController {
 		return ServicesService.updateServices(id, Services);
 	}
 	
-	@DeleteMapping("Services/{id}")
+	@DeleteMapping("/service/{id}")
 	public void deleteServices(@PathVariable int id) {
 		ServicesService.deleteServices(id);
 	}

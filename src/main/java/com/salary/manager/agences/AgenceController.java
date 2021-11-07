@@ -19,7 +19,7 @@ public class AgenceController {
 	private AgencesService agencesService;
 	 
 
-	@RequestMapping(value = "/agence/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/agence", method = RequestMethod.POST)
 	public Agence addAgence(@RequestBody Agence agence) { 
 		return agencesService.addAgence(agence);
 	}
@@ -44,7 +44,7 @@ public class AgenceController {
 		return agencesService.updateAgence(id, agence);
 	}
 	
-	@DeleteMapping("agence/{id}")
+	@DeleteMapping("/agence/{id}")
 	public void deleteAgence(@PathVariable int id) {
 		agencesService.deleteAgence(id);
 	}
