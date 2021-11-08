@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+ 
 
 @RestController
 public class DepartementController {
@@ -28,6 +29,10 @@ public class DepartementController {
 		return departementsService.getAllDepartement();
 	}
 	
+	@RequestMapping(value = "/departement/test/{id}", method = RequestMethod.GET)
+	public List<Departement> listdepartementTest(@PathVariable int id){
+		return departementsService.getDep(id);
+	}
 	@RequestMapping(value = "/departement/name/{designationDepartment}", method = RequestMethod.GET) 
 	public Departement departementByName(@PathVariable String designationDepartment) {
 		return departementsService.getByDesignationDepartement(designationDepartment);
@@ -39,9 +44,14 @@ public class DepartementController {
 	}
 	
 	@PutMapping("/departement/{id}")
-	public Departement updatedepartement(@PathVariable int id,@RequestBody Departement departement) {
-		return departementsService.updateDepartement(id, departement);
+	public Departement updatedepartement(@PathVariable int id,@RequestBody Departement des) {
+		return departementsService.updateDepartement(id, des);
 	}
+	
+//	@PutMapping("/departement/{id}")
+//	public Departement updatedepartement(@PathVariable int id,@RequestBody Departement des) {
+//		return departementsService.miseAjour(id, des);
+//	}
 	
 	@DeleteMapping("/departement/{id}")
 	public void deletedepartement(@PathVariable int id) {
