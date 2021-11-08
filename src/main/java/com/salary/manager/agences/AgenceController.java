@@ -39,12 +39,12 @@ public class AgenceController {
 		return agencesService.getByIdAgence(id);
 	}
 	
-	@PutMapping("/agence/{id}")
+	@PutMapping("/agence/update/{id}")
 	public Agence updateAgence(@PathVariable int id,@RequestBody Agence agence) {
 		return agencesService.updateAgence(id, agence);
 	}
 	
-	@DeleteMapping("/agence/{id}")
+	@DeleteMapping("/agence/delete/{id}")
 	public void deleteAgence(@PathVariable int id) {
 		agencesService.deleteAgence(id);
 	}
