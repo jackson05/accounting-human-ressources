@@ -2,6 +2,8 @@ package com.salary.manager.departement;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,28 @@ public class DepartementService {
     
     public void deleteDepartement (int id) {
     	departementsRepository.deleteById(id);
+    }
+    
+    
+    /*
+     * custom query of update
+     * 1er etapes creation de l'objet EntityManager
+    */
+    EntityManager ent;
+    public Departement customUpdateDepartement(Departement departement) {
+    	
+    	ent.createNativeQuery("UPDATE departement SET date_created_departement=?1,date_modified_departement=?2,"
+    			+ "designation_department=?3,user_created_departement=?4,user_modified_departement=?5 WHERE id=?6")
+    		.setParameter(1, departement.getDateCreatedDepartement())
+    		.setParameter(2, departement.getDateModifiedDepartement())
+    		.setParameter(3, departement.getDesignationDepartment())
+    		.setParameter(4, departement.getUserCreatedDepartement())
+    		.setParameter(5, departement.getUserModifiedDepartement())
+    		.setParameter(6, departement.getId())
+    		.executeUpdate();
+    	
+//    	Departement departement=new Departement();
+    	return departement;
     }
 }
 
