@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import com.salary.manager.agences.Agence;
 import com.salary.manager.banque.Banque;
 import com.salary.manager.category.Category;
-import com.salary.manager.departement.Departement;
 import com.salary.manager.level.Level;
 import com.salary.manager.service.Services;
 
