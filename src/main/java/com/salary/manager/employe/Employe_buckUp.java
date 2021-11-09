@@ -16,7 +16,7 @@ import com.salary.manager.level.Level;
 import com.salary.manager.service.Services;
 
 @Entity
-public class Employe {
+public class Employe_buckUp {
 	@Id()
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -41,7 +41,7 @@ public class Employe {
 	
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Services.class)
 	private Services serviceId;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Fonction.class)
 	private Fonction fonctionId;
 	
@@ -65,13 +65,14 @@ public class Employe {
 	private int version;
 	
 	private int etat;
+ 
 
-	public Employe() {
+	public Employe_buckUp() {
 		super();
 	}
 
 
-	public Employe(int id, String matricule, String nom, String prenom, String anneeNaissance, String genre,
+	public Employe_buckUp(int id, String matricule, String nom, String prenom, String anneeNaissance, String genre,
 			String etatCivile, Level levelId, String conjointFonction, String telephone, String email,
 			String matriculeInss, int nombreDenfant, float salaireDeBase, Services serviceId, Fonction fonctionId,
 			Agence agenceId, int categoryId, Banque banqueId, String compte, String dateEmbauche, String dateCreated,
@@ -115,7 +116,6 @@ public class Employe {
 	public void setFonctionId(Fonction fonctionId) {
 		this.fonctionId = fonctionId;
 	}
-
 
 	public Services getServiceId() {
 		return serviceId;

@@ -34,6 +34,9 @@ public class EmployeService {
 	
 	public Employe updateEmploye(int id,Employe employe) {
 		Employe oldData = employesRepositorie.findById(id).orElse(null);
+//		buck up first
+		employesRepositorie.insertIntoBuckup(oldData);
+		
 		oldData.setAgenceId(employe.getAgenceId());
 		oldData.setAnneeNaissance(employe.getAnneeNaissance());
 		oldData.setBanqueId(employe.getBanqueId());
