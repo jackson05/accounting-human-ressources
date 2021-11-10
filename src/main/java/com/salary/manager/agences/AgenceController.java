@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.DeleteMapping; 
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ public class AgenceController {
 	private AgencesService agencesService;
 	 
 
-	@RequestMapping(value = "/agence/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/agence", method = RequestMethod.POST)
 	public Agence addAgence(@RequestBody Agence agence) { 
 		return agencesService.addAgence(agence);
 	}
@@ -39,12 +38,12 @@ public class AgenceController {
 		return agencesService.getByIdAgence(id);
 	}
 	
-	@PutMapping("/agence/{id}")
+	@PutMapping("/agence/update/{id}")
 	public Agence updateAgence(@PathVariable int id,@RequestBody Agence agence) {
 		return agencesService.updateAgence(id, agence);
 	}
 	
-	@DeleteMapping("agence/{id}")
+	@DeleteMapping("/agence/delete/{id}")
 	public void deleteAgence(@PathVariable int id) {
 		agencesService.deleteAgence(id);
 	}

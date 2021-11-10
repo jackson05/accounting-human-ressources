@@ -7,6 +7,10 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author nkeshicar
+ *
+ */
 @Service
 public class DepartementService {
  
@@ -43,7 +47,10 @@ public class DepartementService {
     	departementsRepository.deleteById(id);
     }
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> f5c01fe66a011d838b02d5a4ca0654f295acb2d7
     /*
      * custom query of update
      * 1er etapes creation de l'objet EntityManager
@@ -60,10 +67,26 @@ public class DepartementService {
     		.setParameter(5, departement.getUserModifiedDepartement())
     		.setParameter(6, departement.getId())
     		.executeUpdate();
+<<<<<<< HEAD
     	
 //    	Departement departement=new Departement();
     	return departement;
     }
+=======
+    	 
+    	return departement;
+    }
+    
+    public Departement miseAjour(int id, Departement des) {
+    	System.out.println("--"+des.getDesignationDepartment());
+    	departementsRepository.updateDepartementById(des.getDesignationDepartment(), id);
+    	return des;
+    }
+    
+    public List<Departement> getDep(int id) { 
+    	return departementsRepository.selectDepId(id);
+    }
+>>>>>>> f5c01fe66a011d838b02d5a4ca0654f295acb2d7
 }
 
 

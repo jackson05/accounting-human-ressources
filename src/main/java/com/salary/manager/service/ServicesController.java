@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.DeleteMapping; 
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ public class ServicesController {
 	private ServicesService ServicesService;
 	 
 
-	@RequestMapping(value = "/service/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/service", method = RequestMethod.POST)
 	public Services addServices(@RequestBody Services Services) { 
 		return ServicesService.addServices(Services);
 	}
@@ -44,7 +43,7 @@ public class ServicesController {
 		return ServicesService.updateServices(id, Services);
 	}
 	
-	@DeleteMapping("Services/{id}")
+	@DeleteMapping("/service/{id}")
 	public void deleteServices(@PathVariable int id) {
 		ServicesService.deleteServices(id);
 	}
