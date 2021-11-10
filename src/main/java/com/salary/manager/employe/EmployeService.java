@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class EmployeService {
 	
 	@Autowired
-	private EmployesRepositorie employesRepositorie;
+	private EmployesRepository employesRepositorie;
 	
 	public Employe addEmploye(Employe employe) {
 		employesRepositorie.save(employe);
@@ -26,6 +26,10 @@ public class EmployeService {
 	
 	public Employe getEmployeByID(int id) {
 		return employesRepositorie.findById(id).orElse(null);
+	}
+	
+	public List<Employe> getEmployeAgeLimite(int anneeNaissance) {
+		return  employesRepositorie.getAnneeLimite(anneeNaissance);
 	}
 	
 	public Employe getEmployeByName(String name) {
