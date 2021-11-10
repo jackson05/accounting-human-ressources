@@ -94,7 +94,6 @@ public class Departement {
 		this.dateModifiedDepartement = dateModifiedDepartement;
 	}
 
- 
 	
    
 }
