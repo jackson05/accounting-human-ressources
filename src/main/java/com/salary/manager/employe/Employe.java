@@ -5,20 +5,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Id; 
 import javax.persistence.ManyToOne;
 
 import com.salary.manager.agences.Agence;
 import com.salary.manager.banque.Banque;
-import com.salary.manager.category.Category;
+import com.salary.manager.categorie.Categorie;
 import com.salary.manager.fonction.Fonction;
 import com.salary.manager.level.Level;
 import com.salary.manager.service.Services;
 
-@Entity
+@Entity() 
 public class Employe {
 	@Id()
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String matricule;
 	private String nom;
@@ -48,8 +48,8 @@ public class Employe {
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Agence.class)
 	private Agence agence;
 	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Category.class)
-	private int category;
+	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Categorie.class)
+	private int categorie;
 	
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Banque.class)
 	private Banque banque;
@@ -93,7 +93,7 @@ public class Employe {
 		this.service = service;
 		this.fonction = fonction;
 		this.agence = agence;
-		this.category = category;
+		this.categorie = category;
 		this.banque = banque;
 		this.compte = compte;
 		this.dateEmbauche = dateEmbauche;
@@ -147,12 +147,12 @@ public class Employe {
 
 
 	public int getCategory() {
-		return category;
+		return categorie;
 	}
 
 
 	public void setCategory(int category) {
-		this.category = category;
+		this.categorie = category;
 	}
 
 

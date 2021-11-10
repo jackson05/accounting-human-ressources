@@ -22,7 +22,7 @@ public interface EmployesRepositorie extends JpaRepository<Employe, Integer> {
 	void updateDepartementById(String version, int id);
 	
 	@Modifying
-	@Query(value = "INSERT into employe VALUES (:employee)", nativeQuery = true)
+	@Query(value = "INSERT into employe_buckup VALUES (:employee)", nativeQuery = true)
 	void insertIntoBuckup(Employe employee);
 	
 	@Query(value = "SELECT * FROM empoyee WHERE id=:id", nativeQuery = true)
