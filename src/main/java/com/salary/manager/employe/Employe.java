@@ -29,7 +29,7 @@ public class Employe {
 	private String etatCivile;
 	
 	@ManyToOne(cascade=CascadeType.ALL, targetEntity=Level.class)
-	private Level levelId;
+	private Level level;
 	private String conjointFonction;
 	
 	private String telephone;
@@ -40,19 +40,19 @@ public class Employe {
 	private float salaireDeBase;
 	
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Services.class)
-	private Services serviceId;
+	private Services service;
 	
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Fonction.class)
-	private Fonction fonctionId;
+	private Fonction fonction;
 	
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Agence.class)
-	private Agence agenceId;
+	private Agence agence;
 	
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Category.class)
-	private int categoryId;
+	private int category;
 	
 	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Banque.class)
-	private Banque banqueId;
+	private Banque banque;
 	private String compte;
 	private String dateEmbauche;
 	private String dateCreated;
@@ -70,11 +70,10 @@ public class Employe {
 		super();
 	}
 
-
 	public Employe(int id, String matricule, String nom, String prenom, String anneeNaissance, String genre,
-			String etatCivile, Level levelId, String conjointFonction, String telephone, String email,
-			String matriculeInss, int nombreDenfant, float salaireDeBase, Services serviceId, Fonction fonctionId,
-			Agence agenceId, int categoryId, Banque banqueId, String compte, String dateEmbauche, String dateCreated,
+			String etatCivile, Level level, String conjointFonction, String telephone, String email,
+			String matriculeInss, int nombreDenfant, float salaireDeBase, Services service, Fonction fonction,
+			Agence agence, int category, Banque banque, String compte, String dateEmbauche, String dateCreated,
 			String dateModified, int userCreated, int userModified, int version, int etat) {
 		super();
 		this.id = id;
@@ -84,18 +83,18 @@ public class Employe {
 		this.anneeNaissance = anneeNaissance;
 		this.genre = genre;
 		this.etatCivile = etatCivile;
-		this.levelId = levelId;
+		this.level = level;
 		this.conjointFonction = conjointFonction;
 		this.telephone = telephone;
 		this.email = email;
 		this.matriculeInss = matriculeInss;
 		this.nombreDenfant = nombreDenfant;
 		this.salaireDeBase = salaireDeBase;
-		this.serviceId = serviceId;
-		this.fonctionId = fonctionId;
-		this.agenceId = agenceId;
-		this.categoryId = categoryId;
-		this.banqueId = banqueId;
+		this.service = service;
+		this.fonction = fonction;
+		this.agence = agence;
+		this.category = category;
+		this.banque = banque;
 		this.compte = compte;
 		this.dateEmbauche = dateEmbauche;
 		this.dateCreated = dateCreated;
@@ -107,48 +106,63 @@ public class Employe {
 	}
 
 
-	public Fonction getFonctionId() {
-		return fonctionId;
+	public Level getLevel() {
+		return level;
 	}
 
 
-	public void setFonctionId(Fonction fonctionId) {
-		this.fonctionId = fonctionId;
+	public void setLevel(Level level) {
+		this.level = level;
 	}
 
 
-	public Services getServiceId() {
-		return serviceId;
+	public Services getService() {
+		return service;
 	}
 
 
-	public void setServiceId(Services serviceId) {
-		this.serviceId = serviceId;
+	public void setService(Services service) {
+		this.service = service;
 	}
 
 
-	public Agence getAgenceId() {
-		return agenceId;
+	public Fonction getFonction() {
+		return fonction;
 	}
 
 
-	public void setAgenceId(Agence agenceId) {
-		this.agenceId = agenceId;
+	public void setFonction(Fonction fonction) {
+		this.fonction = fonction;
 	}
 
 
-	public Banque getBanqueId() {
-		return banqueId;
+	public Agence getAgence() {
+		return agence;
 	}
 
 
-	public void setBanqueId(Banque banqueId) {
-		this.banqueId = banqueId;
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 
 
-	public void setLevelId(Level levelId) {
-		this.levelId = levelId;
+	public int getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+
+
+	public Banque getBanque() {
+		return banque;
+	}
+
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
 	}
 
 
@@ -209,11 +223,6 @@ public class Employe {
 	}
 
 	 
-	public Level getLevelId() {
-		return levelId;
-	}
-
-
 	public String getConjointFonction() {
 		return conjointFonction;
 	}
@@ -262,15 +271,6 @@ public class Employe {
 		this.salaireDeBase = salaireDeBase;
 	}
  
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
  
 	public String getCompte() {
 		return compte;
