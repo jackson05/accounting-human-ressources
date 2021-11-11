@@ -102,7 +102,7 @@ public class MyUserDetails implements UserDetails{
 			this.expiredDate=user.getExpiredDate();
 			this.lastAcces=user.getLastAcces();
 			this.createdDate=user.getCreatedDate();
-			this.authorities=user.getRoles();
+//			this.authorities=user.getRoles();
 	}
 	
 	@Override
