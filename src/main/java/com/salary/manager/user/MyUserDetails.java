@@ -33,10 +33,6 @@ public class MyUserDetails implements UserDetails{
 	}
 
 	
-
-	
-
-
 	public boolean isExpired() {
 		return expired;
 	}
