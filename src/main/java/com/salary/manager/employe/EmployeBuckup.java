@@ -1,24 +1,15 @@
 package com.salary.manager.employe;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import com.salary.manager.agences.Agence;
-import com.salary.manager.banque.Banque;
-import com.salary.manager.category.Category;
-import com.salary.manager.fonction.Fonction;
-import com.salary.manager.level.Level;
-import com.salary.manager.service.Services;
+import javax.persistence.Id; 
 
 @Entity
-public class Employe_buckUp {
+public class EmployeBuckup {
 	@Id()
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String matricule;
 	private String nom;
@@ -26,10 +17,9 @@ public class Employe_buckUp {
 	private String anneeNaissance;
 	
 	private String genre;
-	private String etatCivile;
+	private String etatCivile; 
 	
-	@ManyToOne(cascade=CascadeType.ALL, targetEntity=Level.class)
-	private Level level;
+	private int levelId;
 	private String conjointFonction;
 	
 	private String telephone;
@@ -39,20 +29,12 @@ public class Employe_buckUp {
 	
 	private float salaireDeBase;
 	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Services.class)
-	private Services service;
-
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Fonction.class)
-	private Fonction fonction;
+	private int serviceId;
+	private int fonctionId;
+	private int agenceId;
+	private int categoryId;
 	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Agence.class)
-	private Agence agence;
-	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Category.class)
-	private int category;
-	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Banque.class)
-	private Banque banque;
+	private int banqueId;
 	private String compte;
 	private String dateEmbauche;
 	private String dateCreated;
@@ -67,15 +49,16 @@ public class Employe_buckUp {
 	private int etat;
  
 
-	public Employe_buckUp() {
+	public EmployeBuckup() {
 		super();
 	}
 
-	public Employe_buckUp(int id, String matricule, String nom, String prenom, String anneeNaissance, String genre,
-			String etatCivile, Level level, String conjointFonction, String telephone, String email,
-			String matriculeInss, int nombreDenfant, float salaireDeBase, Services service, Fonction fonction,
-			Agence agence, int category, Banque banque, String compte, String dateEmbauche, String dateCreated,
-			String dateModified, int userCreated, int userModified, int version, int etat) {
+
+	public EmployeBuckup(int id, String matricule, String nom, String prenom, String anneeNaissance, String genre,
+			String etatCivile, int levelId, String conjointFonction, String telephone, String email,
+			String matriculeInss, int nombreDenfant, float salaireDeBase, int serviceId, int fonctionId, int agenceId,
+			int categoryId, int banque, String compte, String dateEmbauche, String dateCreated, String dateModified,
+			int userCreated, int userModified, int version, int etat) {
 		super();
 		this.id = id;
 		this.matricule = matricule;
@@ -84,18 +67,18 @@ public class Employe_buckUp {
 		this.anneeNaissance = anneeNaissance;
 		this.genre = genre;
 		this.etatCivile = etatCivile;
-		this.level = level;
+		this.levelId = levelId;
 		this.conjointFonction = conjointFonction;
 		this.telephone = telephone;
 		this.email = email;
 		this.matriculeInss = matriculeInss;
 		this.nombreDenfant = nombreDenfant;
 		this.salaireDeBase = salaireDeBase;
-		this.service = service;
-		this.fonction = fonction;
-		this.agence = agence;
-		this.category = category;
-		this.banque = banque;
+		this.serviceId = serviceId;
+		this.fonctionId = fonctionId;
+		this.agenceId = agenceId;
+		this.categoryId = categoryId;
+		this.banqueId = banque;
 		this.compte = compte;
 		this.dateEmbauche = dateEmbauche;
 		this.dateCreated = dateCreated;
@@ -107,84 +90,62 @@ public class Employe_buckUp {
 	}
 
 
-
-
-	public Level getLevel() {
-		return level;
-	}
-
-	public void setLevel(Level level) {
-		this.level = level;
+	public int getLevelId() {
+		return levelId;
 	}
 
 
-
-
-	public Services getService() {
-		return service;
+	public void setLevelId(int levelId) {
+		this.levelId = levelId;
 	}
 
 
-
-
-	public void setService(Services service) {
-		this.service = service;
+	public int getServiceId() {
+		return serviceId;
 	}
 
 
-
-
-	public Fonction getFonction() {
-		return fonction;
+	public void setServiceId(int serviceId) {
+		this.serviceId = serviceId;
 	}
 
 
-
-
-	public void setFonction(Fonction fonction) {
-		this.fonction = fonction;
+	public int getFonctionId() {
+		return fonctionId;
 	}
 
 
-
-
-	public Agence getAgence() {
-		return agence;
+	public void setFonctionId(int fonctionId) {
+		this.fonctionId = fonctionId;
 	}
 
 
-
-
-	public void setAgence(Agence agence) {
-		this.agence = agence;
+	public int getAgenceId() {
+		return agenceId;
 	}
 
 
-
-
-	public int getCategory() {
-		return category;
+	public void setAgenceId(int agenceId) {
+		this.agenceId = agenceId;
 	}
 
 
-
-
-	public void setCategory(int category) {
-		this.category = category;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
 
-
-
-	public Banque getBanque() {
-		return banque;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 
-
-
-	public void setBanque(Banque banque) {
-		this.banque = banque;
+	public int getBanque() {
+		return banqueId;
+	}
+ 
+	public void setBanque(int banque) {
+		this.banqueId = banque;
 	}
 
 

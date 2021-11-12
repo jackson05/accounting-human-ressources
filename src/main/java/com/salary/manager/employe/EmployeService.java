@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class EmployeService {
 	
 	@Autowired
-	private EmployesRepositorie employesRepositorie;
+	private EmployesRepository employesRepositorie;
 	
 	public Employe addEmploye(Employe employe) {
 		employesRepositorie.save(employe);
@@ -28,6 +28,10 @@ public class EmployeService {
 		return employesRepositorie.findById(id).orElse(null);
 	}
 	
+	public List<Employe> getEmployeAgeLimite(int anneeNaissance) {
+		return  employesRepositorie.getAnneeLimite(anneeNaissance);
+	}
+	
 	public Employe getEmployeByName(String name) {
 		return employesRepositorie.findEmployeByNom(name);
 	}
@@ -35,13 +39,15 @@ public class EmployeService {
 	public Employe updateEmploye(int id,Employe employe) {
 		Employe oldData = employesRepositorie.findById(id).orElse(null);
 //		buck up first
+		oldData.setVersion(oldData.getVersion()+1);
+		oldData.setId(0);
 		employesRepositorie.insertIntoBuckup(oldData);
 		
-		oldData.setAgenceId(employe.getAgenceId());
+		oldData.setAgence(employe.getAgence());
 		oldData.setAnneeNaissance(employe.getAnneeNaissance());
-		oldData.setBanqueId(employe.getBanqueId());
+		oldData.setBanque(employe.getBanque());
 		
-		oldData.setCategoryId(employe.getCategoryId());
+		oldData.setCategory(employe.getCategory());
 		oldData.setCompte(employe.getCompte());
 		oldData.setConjointFonction(employe.getConjointFonction());
 		
@@ -60,10 +66,10 @@ public class EmployeService {
 		
 		oldData.setNombreDenfant(employe.getNombreDenfant());
 		oldData.setSalaireDeBase(employe.getSalaireDeBase());
-		oldData.setLevelId(employe.getLevelId());
+		oldData.setLevel(employe.getLevel());
 		
-		oldData.setAgenceId(employe.getAgenceId());
-		oldData.setServiceId(employe.getServiceId());
+		oldData.setAgence(employe.getAgence());
+		oldData.setService(employe.getService());
 		oldData.setTelephone(employe.getTelephone());
 		oldData.setUserModified(employe.getUserModified());
 		

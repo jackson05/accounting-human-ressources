@@ -46,7 +46,7 @@ public class DepartementService {
     public void deleteDepartement (int id) {
     	departementsRepository.deleteById(id);
     }
-    
+
     /*
      * custom query of update
      * 1er etapes creation de l'objet EntityManager
@@ -63,6 +63,7 @@ public class DepartementService {
     		.setParameter(5, departement.getUserModifiedDepartement())
     		.setParameter(6, departement.getId())
     		.executeUpdate();
+
     	 
     	return departement;
     }
@@ -76,6 +77,7 @@ public class DepartementService {
     public List<Departement> getDep(int id) { 
     	return departementsRepository.selectDepId(id);
     }
+
 }
 
 

@@ -29,10 +29,10 @@ public class DepartementController {
 		return departementsService.getAllDepartement();
 	}
 	
-	@RequestMapping(value = "/departement/test/{id}", method = RequestMethod.GET)
-	public List<Departement> listdepartementTest(@PathVariable int id){
-		return departementsService.getDep(id);
-	}
+//	@RequestMapping(value = "/departement/test/{id}", method = RequestMethod.GET)
+//	public List<Departement> listdepartementTest(@PathVariable int id){
+//		return departementsService.getDep(id);
+//	}
 	@RequestMapping(value = "/departement/name/{designationDepartment}", method = RequestMethod.GET) 
 	public Departement departementByName(@PathVariable String designationDepartment) {
 		return departementsService.getByDesignationDepartement(designationDepartment);

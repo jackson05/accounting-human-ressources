@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public interface EmployesRepositorie extends JpaRepository<Employe, Integer> {
+public interface EmployesRepository extends JpaRepository<Employe, Integer> {
 
 	Employe findEmployeByNom(String nom);
 	
@@ -22,10 +22,10 @@ public interface EmployesRepositorie extends JpaRepository<Employe, Integer> {
 	void updateDepartementById(String version, int id);
 	
 	@Modifying
-	@Query(value = "INSERT into employe VALUES (:employee)", nativeQuery = true)
+	@Query(value = "INSERT into employe_buckup VALUES (:employee)", nativeQuery = true)
 	void insertIntoBuckup(Employe employee);
 	
-	@Query(value = "SELECT * FROM empoyee WHERE id=:id", nativeQuery = true)
-	List<Employe> selectEmployeId(@Param("id") int id);
+	@Query(value = "SELECT * FROM empoye WHERE anneeNaissance >= :anneeNaissance", nativeQuery = true)
+	List<Employe> getAnneeLimite(@Param("anneeLimit") int anneeLimit);
 
 }
