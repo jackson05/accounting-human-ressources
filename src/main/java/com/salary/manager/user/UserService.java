@@ -1,6 +1,8 @@
 package com.salary.manager.user;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,6 @@ public class UserService implements UserDetailsService {
 	
 	@Autowired
 	private UserRepository userRepo;
-	
-	public User create(User user) {
-		return userRepo.save(user);
-	}
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -28,6 +26,22 @@ public class UserService implements UserDetailsService {
 		 
 		 return user.map(MyUserDetails::new).get();
 	}
+	
+	public User save(User user) {
+		return userRepo.save(user);
+	}
+	
+	public User delete(User user) {
+		userRepo.delete(user);
+		return user;
+	}
+	
+	public List<User>loadUsers(){
+		List<User>users=new ArrayList<>();
+		userRepo.findAll().forEach(users::add);
+		return users;
+	}
+	
 	
 
 }
