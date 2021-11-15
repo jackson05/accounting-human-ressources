@@ -36,9 +36,12 @@ public class UserService implements UserDetailsService {
 		return userRepo.save(user);
 	}
 	
-	public User delete(User user) {
+	public void delete(User user) {
 		userRepo.delete(user);
-		return user;
+	}
+	
+	public void deleteById(int id) {
+		userRepo.deleteById(id);
 	}
 	
 	public List<User>loadUsers(){
@@ -46,6 +49,8 @@ public class UserService implements UserDetailsService {
 		userRepo.findAll().forEach(users::add);
 		return users;
 	}
+	
+	
 	
 	
 
