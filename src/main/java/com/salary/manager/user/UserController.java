@@ -8,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +26,6 @@ public class UserController {
 	
 	@Autowired
 	private UserService userDetailsService;
-	
-	@Autowired
-	private UserRepository userRepo;
 	
 	@GetMapping("/hello")
 	public String hello() {
@@ -63,16 +61,28 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("/user/{user}")
+	@PostMapping("/user/add/{user}")
 	public User addUser(User user) {
-		return userRepo.save(user);
+		return userDetailsService.save(user);
 	}
+	
 	
 	@GetMapping("/users")
 	public List<User> getUsers(){
-		return userRepo.findAll();
+		return userDetailsService.loadUsers();
 	}
 	
+	@DeleteMapping("/user/delete/{user}")
+	public List<User> deleteUser(User user){
+		 userDetailsService.delete(user);
+		 return userDetailsService.loadUsers();
+	}
+	
+	@DeleteMapping("/user/{id}/delete")
+	public List<User> deleteUser(int id){
+		userDetailsService.deleteById(id);
+		return userDetailsService.loadUsers();
+	}
 	
 	
 	
