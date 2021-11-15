@@ -14,9 +14,12 @@ public class RoleService {
 		return roleRepo.save(role);
 	}
 	
-	public Role delete(Role role) {
+	public void delete(Role role) {
 		roleRepo.delete(role);
-		return role;
+	}
+	
+	public void deleteById(int id) {
+		roleRepo.deleteById(id);
 	}
 	
 	public List<Role> findAllRoles(){
