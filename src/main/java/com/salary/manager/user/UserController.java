@@ -63,10 +63,18 @@ public class UserController {
 	}
 	
 	
+	@PostMapping("/user/{user}")
+	public User addUser(User user) {
+		return userRepo.save(user);
+	}
+	
 	@GetMapping("/users")
 	public List<User> getUsers(){
 		return userRepo.findAll();
 	}
+	
+	
+	
 	
 
 }
