@@ -73,13 +73,13 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/user/delete/{user}")
-	public List<User> deleteUser(User user){
+	public List<User> deleteUser(@RequestBody User user){
 		 userDetailsService.delete(user);
 		 return userDetailsService.loadUsers();
 	}
 	
 	@DeleteMapping("/user/{id}/delete")
-	public List<User> deleteUser(int id){
+	public List<User> deleteUser(@RequestBody int id){
 		userDetailsService.deleteById(id);
 		return userDetailsService.loadUsers();
 	}
