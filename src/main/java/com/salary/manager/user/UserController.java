@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.salary.manager.security.jwt.model.AuthenticationRequest;
@@ -62,12 +64,12 @@ public class UserController {
 	
 	
 	@PostMapping("/user/add/{user}")
-	public User addUser(User user) {
+	public User addUser(@RequestBody User user) {
 		return userDetailsService.save(user);
 	}
 	
 	
-	@GetMapping("/users")
+	@GetMapping("/users/load")
 	public List<User> getUsers(){
 		return userDetailsService.loadUsers();
 	}
@@ -84,7 +86,9 @@ public class UserController {
 		return userDetailsService.loadUsers();
 	}
 	
-	
-	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
+		return ResponseEntity.ok(userDetailsService.save(user));
+	}
 
 }
