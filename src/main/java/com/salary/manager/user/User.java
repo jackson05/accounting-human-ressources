@@ -1,7 +1,6 @@
 package com.salary.manager.user;
 
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,17 +15,17 @@ import com.salary.manager.user.role.Role;
 @Entity
 public class User {
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String userName;
 	private String password;
 	private boolean isEnabled;
 	private boolean isAccountExpired;
 	private boolean isLocked;
-	private Date createdDate;
-	private Date modifiedDate;
-	private Date lastAcces;
-	private Date expiredDate;
+	private String createdDate;
+	private String modifiedDate;
+	private String lastAcces;
+	private String expiredDate;
 	
 	@ManyToMany(mappedBy = "user")
 	private List<Role> roles=new ArrayList<>();
@@ -72,33 +71,33 @@ public class User {
 	public void setLocked(boolean isLocked) {
 		this.isLocked = isLocked;
 	}
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
-	public Date getModifiedDate() {
+	public String getModifiedDate() {
 		return modifiedDate;
 	}
-	public void setModifiedDate(Date modifiedDate) {
+	public void setModifiedDate(String modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 	
-	public Date getLastAcces() {
+	public String getLastAcces() {
 		return lastAcces;
 	}
 	
-	public void setLastAcces(Date lastAcces) {
+	public void setLastAcces(String lastAcces) {
 		this.lastAcces = lastAcces;
 	}
 	
-	public Date getExpiredDate() {
+	public String getExpiredDate() {
 		return expiredDate;
 	}
 	
 	
-	public void setExpiredDate(Date expiredDate) {
+	public void setExpiredDate(String expiredDate) {
 		this.expiredDate = expiredDate;
 	}
 	
