@@ -1,7 +1,6 @@
 package com.salary.manager.user;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,27 +40,27 @@ public class MyUserDetails implements UserDetails{
 		this.expired = expired;
 	}
 
-	public Date getExpiredDate() {
+	public String getExpiredDate() {
 		return expiredDate;
 	}
 
-	public void setExpiredDate(Date expiredDate) {
+	public void setExpiredDate(String expiredDate) {
 		this.expiredDate = expiredDate;
 	}
 
-	public Date getLastAcces() {
+	public String getLastAcces() {
 		return lastAcces;
 	}
 
-	public void setLastAcces(Date lastAcces) {
+	public void setLastAcces(String lastAcces) {
 		this.lastAcces = lastAcces;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -81,9 +80,9 @@ public class MyUserDetails implements UserDetails{
 	private boolean enabled;
 	private boolean expired;
 	private boolean locked;
-	private Date expiredDate;
-	private Date lastAcces;
-	private Date createdDate;
+	private String expiredDate;
+	private String lastAcces;
+	private String createdDate;
 	
 	private List<Role>authorities;
 	
