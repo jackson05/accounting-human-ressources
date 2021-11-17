@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,6 +17,7 @@ import com.salary.manager.security.jwt.util.JwtRequestFilter;
 import com.salary.manager.user.UserService;
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 //	@Autowired
@@ -23,6 +25,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private UserService userDetailsServices;
+	@Autowired
+	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+	
 	
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
@@ -38,10 +43,13 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		http.csrf().disable()
 			.authorizeRequests()
-				.antMatchers("/authenticate")
+				.antMatchers("/authenticate","/users/load","/hello","/user/register")
 				.permitAll()
 				.anyRequest()
 				.authenticated()
+			.and()
+				.exceptionHandling()
+				.authenticationEntryPoint(jwtAuthenticationEntryPoint)
 			.and()
 				.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
