@@ -9,8 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.salary.manager.test.model.User;
-import com.salary.manager.user.UserLogin;
+import com.salary.manager.user.User;
 import com.salary.manager.user.UserRepository;
 
 @Service
@@ -28,13 +27,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("User not found with username: " + userName);
 		}
-		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				new ArrayList<>());
 	}
 	
 	public User save(User user) {
-//		User newUser = new User();
-//		newUser.setUserName(user.getUsername());
 		user.setPassword(bcryptEncoder.encode(user.getPassword()));
 		return userRepo.save(user);
 	}
