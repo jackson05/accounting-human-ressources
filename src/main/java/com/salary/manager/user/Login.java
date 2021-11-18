@@ -1,5 +1,5 @@
 package com.salary.manager.user;
-public class UserLogin {
+public class Login{
 	private String userName;
 	private String password;
 
