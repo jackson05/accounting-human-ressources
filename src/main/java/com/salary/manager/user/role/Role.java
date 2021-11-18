@@ -27,7 +27,7 @@ public class Role {
 	private String createdDate;
 	private String modifiedDate;
 
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinTable(
 			name="user_roles",
 			joinColumns = @JoinColumn(
@@ -47,12 +47,14 @@ public class Role {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+	
 	public String getCreatedDate() {
 		return createdDate;
 	}
 	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
 	}
+	
 	public String getModifiedDate() {
 		return modifiedDate;
 	}
