@@ -17,7 +17,7 @@ import com.salary.manager.security.jwt.model.AuthenticationRequest;
 import com.salary.manager.security.jwt.model.AuthenticationResponse;
 import com.salary.manager.test.config.JwtTokenUtil;
 import com.salary.manager.test.service.JwtUserDetailsService;
-import com.salary.manager.user.UserLogin;
+import com.salary.manager.user.User;
 
 @RestController
 @CrossOrigin
@@ -46,7 +46,7 @@ public class JwtAuthenticationController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody UserLogin user) throws Exception {
+	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
 		return ResponseEntity.ok(userDetailsService.save(user));
 	}
 
