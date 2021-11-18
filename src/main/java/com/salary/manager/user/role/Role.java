@@ -12,8 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+//
+//import com.salary.manager.test.model.DAOUser;
+//import com.salary.manager.user.User;
 
-import com.salary.manager.user.User;
+import com.salary.manager.test.model.User;
 
 @Entity
 public class Role {
