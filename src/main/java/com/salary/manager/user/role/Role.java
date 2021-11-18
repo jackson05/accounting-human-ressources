@@ -12,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.salary.manager.user.User;
 //
 //import com.salary.manager.test.model.DAOUser;
 //import com.salary.manager.user.User;
 
-import com.salary.manager.test.model.User;
+//import com.salary.manager.test.model.User;
 
 @Entity
 public class Role {
@@ -27,7 +29,7 @@ public class Role {
 	private String createdDate;
 	private String modifiedDate;
 
-	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinTable(
 			name="user_roles",
 			joinColumns = @JoinColumn(
