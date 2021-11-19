@@ -1,4 +1,4 @@
-package com.salary.manager.test.controller;
+package com.salary.manager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.salary.manager.test.controller;
+package com.salary.manager.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
