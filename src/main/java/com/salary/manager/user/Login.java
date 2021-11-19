@@ -1,14 +1,14 @@
 package com.salary.manager.user;
 public class Login{
-	private String userName;
+	private String username;
 	private String password;
 
 	public String getUsername() {
-		return userName;
+		return username;
 	}
 
-	public void setUsername(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
