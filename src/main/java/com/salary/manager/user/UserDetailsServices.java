@@ -1,4 +1,4 @@
-package com.salary.manager.test.service;
+package com.salary.manager.user;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.salary.manager.user.User;
-import com.salary.manager.user.UserRepository;
-
 @Service
-public class JwtUserDetailsService implements UserDetailsService {
+public class UserDetailsServices implements UserDetailsService {
 	
 	@Autowired
 	private UserRepository userRepo;

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.salary.manager.security.jwt.model.AuthenticationRequest;
 import com.salary.manager.security.jwt.model.AuthenticationResponse;
 import com.salary.manager.test.config.JwtTokenUtil;
-import com.salary.manager.test.service.JwtUserDetailsService;
 import com.salary.manager.user.User;
+import com.salary.manager.user.UserDetailsServices;
 
 @RestController
 @CrossOrigin
@@ -30,14 +30,14 @@ public class JwtAuthenticationController {
 	private JwtTokenUtil jwtTokenUtil;
 
 	@Autowired
-	private JwtUserDetailsService userDetailsService;
+	private UserDetailsServices userDetailsServices;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
-		final UserDetails userDetails = userDetailsService
+		final UserDetails userDetails = userDetailsServices
 				.loadUserByUsername(authenticationRequest.getUsername());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
@@ -47,7 +47,7 @@ public class JwtAuthenticationController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
-		return ResponseEntity.ok(userDetailsService.save(user));
+		return ResponseEntity.ok(userDetailsServices.save(user));
 	}
 
 	private void authenticate(String username, String password) throws Exception {
