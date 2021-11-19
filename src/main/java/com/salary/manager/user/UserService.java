@@ -43,17 +43,7 @@ public class UserService  implements UserDetailsService {
 						);
 	}
 	
-	public User save(User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		return userRepo.save(user);
-	}
 	
-	public List<User> getUsers() {
-		List<User> list=new ArrayList<>();
-		userRepo.findAll().forEach(list::add);
-		 return list;
-		 
-	}
 	
 	
 	private Collection<? extends GrantedAuthority>rolesToAuthorities(List<Role> roles)
@@ -70,6 +60,21 @@ public class UserService  implements UserDetailsService {
 		return rolesToAuthorities(authorities);
 	}
 	
+/*
+ * SECTION DE GESTION DES CRUD POUR L'UTILISATEUR
+ * ===================================================
+ */
+	public User save(User user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		return userRepo.save(user);
+	}
+	
+	public List<User> getUsers() {
+		List<User> list=new ArrayList<>();
+		userRepo.findAll().forEach(list::add);
+		 return list;
+		 
+	}
 	
 	public void delete(User user) {
 		userRepo.delete(user);
