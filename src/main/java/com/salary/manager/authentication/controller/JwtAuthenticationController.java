@@ -1,4 +1,4 @@
-package com.salary.manager.controller;
+package com.salary.manager.authentication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.salary.manager.security.jwt.model.AuthenticationRequest;
 import com.salary.manager.security.jwt.model.AuthenticationResponse;
-import com.salary.manager.test.config.JwtTokenUtil;
+import com.salary.manager.security.jwt.util.JwtTokenUtil;
 import com.salary.manager.user.User;
-import com.salary.manager.user.UserDetailsServices;
+import com.salary.manager.user.UserService;
 
 @RestController
 @CrossOrigin
@@ -30,7 +30,7 @@ public class JwtAuthenticationController {
 	private JwtTokenUtil jwtTokenUtil;
 
 	@Autowired
-	private UserDetailsServices userDetailsServices;
+	private UserService userDetailsServices;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {

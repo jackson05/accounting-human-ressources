@@ -4,12 +4,15 @@ package com.salary.manager.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.salary.manager.user.role.Role;
 
 @Entity
@@ -27,7 +30,8 @@ public class User {
 	private String lastAcces;
 	private String expiredDate;
 	
-	@ManyToMany(mappedBy = "user")
+	@ManyToMany(fetch =FetchType.EAGER ,mappedBy= "user",cascade = CascadeType.ALL)
+	@JsonBackReference
 	private List<Role> roles=new ArrayList<>();
 	
 	public int getIdUser() {

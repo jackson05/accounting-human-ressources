@@ -1,4 +1,4 @@
-package com.salary.manager.test.config;
+package com.salary.manager.security.jwt.util;
 
 import java.io.IOException;
 import java.io.Serializable;
