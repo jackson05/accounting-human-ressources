@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.salary.manager.user.User;
 //
 //import com.salary.manager.test.model.DAOUser;
@@ -29,18 +30,22 @@ public class Role {
 	private String createdDate;
 	private String modifiedDate;
 
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinTable(
 			name="user_roles",
 			joinColumns = @JoinColumn(
-					name="role_id",
-					referencedColumnName = "id"
+					name="role_id"
+//					,
+//					referencedColumnName = "id"
 					),
 			inverseJoinColumns = @JoinColumn(
-					name="user_id",
-					referencedColumnName="id")
+					name="user_id"
+//					,
+//					referencedColumnName="id"
+					)
 			
 			)
+	@JsonBackReference
 	private List<User> user=new ArrayList<>();
 
 	public String getRoleName() {
