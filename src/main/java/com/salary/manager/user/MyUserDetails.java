@@ -27,9 +27,6 @@
 //		this.idUser = idUser;
 //	}
 //
-//	public String getUserName() {
-//		return userName;
-//	}
 //
 //	
 //	public boolean isExpired() {
@@ -75,7 +72,7 @@
 ////	}
 //
 //	private int idUser;
-//	private String userName;
+//	private String username;
 //	private String password;
 //	private boolean enabled;
 //	private boolean expired;
@@ -89,7 +86,7 @@
 //	public MyUserDetails(User user) {
 //		
 //			this.idUser=user.getIdUser();
-//			this.userName=user.getUserName();
+//			this.username=user.getUsername();
 //			this.password=user.getPassword();
 //			this.enabled=user.isEnabled();
 //			this.locked=user.isLocked();
@@ -114,7 +111,7 @@
 //
 //	@Override
 //	public String getUsername() {
-//		return userName;
+//		return username;
 //	}
 //
 //	@Override
