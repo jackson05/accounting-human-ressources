@@ -3,9 +3,12 @@ package com.salary.manager.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -68,15 +71,15 @@ public class UserController {
 		 return userDetailsService.loadUsers();
 	}
 	
-	@DeleteMapping("/user/{id}/delete")
+	@DeleteMapping("/user/delete/{id}")
 	public List<User> deleteUser(@RequestBody int id){
 		userDetailsService.deleteById(id);
 		return userDetailsService.loadUsers();
 	}
 	
-//	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
-//	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
-//		return ResponseEntity.ok(userDetailsService.save(user));
-//	}
+	@RequestMapping(value = "/user/register/{user}", method = RequestMethod.POST)
+	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
+		return ResponseEntity.ok(userDetailsService.save(user));
+	}
 
 }
