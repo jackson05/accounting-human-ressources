@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/role")
+@RestController
 public class RoleController {
 	
 	@Autowired
 	private RoleService rolesService;
 	
-	@PostMapping("/add/{role}")
+	@PostMapping("/role/add/{role}")
 	public Role addRole(@RequestBody Role role) {
 		return rolesService.save(role);
 	}
 	
-	@GetMapping("/roles")
+	@GetMapping("/role/roles")
 	public List<Role> getRoles(){
 		return rolesService.findAllRoles();
 	}
