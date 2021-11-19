@@ -1,4 +1,4 @@
-package com.salary.manager.authentication.controller;
+package com.salary.manager.authentication;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
