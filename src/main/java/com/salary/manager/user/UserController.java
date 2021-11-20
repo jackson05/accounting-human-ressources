@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -54,10 +53,10 @@ public class UserController {
 //	}
 	
 	
-//	@PostMapping("/user/add/{user}")
-//	public User addUser(@RequestBody User user) {
-//		return userDetailsService.save(user);
-//	}
+	@PostMapping("/user/register")
+	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
+		return ResponseEntity.ok(userDetailsService.save(user));
+	}
 	
 	
 	@GetMapping("/user/load")
@@ -77,9 +76,6 @@ public class UserController {
 		return userDetailsService.loadUsers();
 	}
 	
-	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
-		return ResponseEntity.ok(userDetailsService.save(user));
-	}
+	
 
 }
