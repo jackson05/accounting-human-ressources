@@ -60,24 +60,24 @@ public class UserController {
 //	}
 	
 	
-	@GetMapping("/users/load")
+	@GetMapping("/user/load")
 	public List<User> getUsers(){
 		return userDetailsService.loadUsers();
 	}
 	
 	@DeleteMapping("/user/delete/{user}")
-	public List<User> deleteUser(@RequestBody User user){
+	public List<User> deleteUser(User user){
 		 userDetailsService.delete(user);
 		 return userDetailsService.loadUsers();
 	}
 	
 	@DeleteMapping("/user/delete/{id}")
-	public List<User> deleteUser(@RequestBody int id){
+	public List<User> deleteUser(int id){
 		userDetailsService.deleteById(id);
 		return userDetailsService.loadUsers();
 	}
 	
-	@RequestMapping(value = "/user/register/{user}", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
 	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
 		return ResponseEntity.ok(userDetailsService.save(user));
 	}
