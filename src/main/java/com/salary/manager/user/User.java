@@ -31,7 +31,7 @@ public class User {
 	private String expiredDate;
 	
 	@ManyToMany(fetch =FetchType.EAGER ,mappedBy= "user",cascade = CascadeType.ALL)
-	@JsonBackReference
+//	@JsonBackReference
 	private List<Role> roles=new ArrayList<>();
 	
 	public int getIdUser() {

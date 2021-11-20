@@ -35,13 +35,13 @@ public class Role {
 			name="user_roles",
 			joinColumns = @JoinColumn(
 					name="role_id"
-//					,
-//					referencedColumnName = "id"
+					,
+					referencedColumnName = "id"
 					),
 			inverseJoinColumns = @JoinColumn(
 					name="user_id"
-//					,
-//					referencedColumnName="id"
+					,
+					referencedColumnName="id"
 					)
 			
 			)
