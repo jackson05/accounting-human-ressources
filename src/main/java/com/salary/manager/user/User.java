@@ -12,13 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.salary.manager.user.role.Role;
 
 @Entity
 public class User {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String username;
 	private String password;
@@ -31,7 +30,6 @@ public class User {
 	private String expiredDate;
 	
 	@ManyToMany(fetch =FetchType.EAGER ,mappedBy= "user",cascade = CascadeType.ALL)
-//	@JsonBackReference
 	private List<Role> roles=new ArrayList<>();
 	
 	public int getIdUser() {
