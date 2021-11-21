@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,53 +26,25 @@ public class UserController {
 		return "hello world";
 	}
 	
-//	@Autowired
-//	private JwtUtil jwtTokenUtil;
-//
-//	@PostMapping("/authenticate")
-//	public ResponseEntity<?> createAuthenticationToken(@RequestBody 
-//			AuthenticationRequest authenticationRequest)throws Exception {
-//		try {		
-//			authenticationManager
-//			.authenticate(
-//					new UsernamePasswordAuthenticationToken
-//					(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
-//			
-//		}catch (BadCredentialsException e) {
-//			throw new Exception("Incorrect userName and Password",e);
-//		}
-//		
-//		final UserDetails userDetails=userDetailsService
-//										.loadUserByUsername
-//										(authenticationRequest.getUsername());
-//		
-//		final String jwt=jwtTokenUtil.generateToken(userDetails);
-//		System.out.println("Token generated= "+jwt);
-//		
-//		return ResponseEntity.ok(new AuthenticationResponse(jwt));
-//
-//	}
-	
-	
 	@PostMapping("/user/register")
 	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
 		return ResponseEntity.ok(userDetailsService.save(user));
 	}
 	
 	
-	@GetMapping("/user/load")
+	@GetMapping("/users")
 	public List<User> getUsers(){
 		return userDetailsService.loadUsers();
 	}
 	
 	@DeleteMapping("/user/delete/{user}")
-	public List<User> deleteUser(User user){
+	public List<User> deleteUser(@PathVariable User user){
 		 userDetailsService.delete(user);
 		 return userDetailsService.loadUsers();
 	}
 	
-	@DeleteMapping("/user/delete/{id}")
-	public List<User> deleteUser(int id){
+	@DeleteMapping("/user/{id}")
+	public List<User> deleteUser(@PathVariable int id){
 		userDetailsService.deleteById(id);
 		return userDetailsService.loadUsers();
 	}
