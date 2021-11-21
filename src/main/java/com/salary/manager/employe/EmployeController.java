@@ -2,8 +2,7 @@ package com.salary.manager.employe;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class EmployeController {
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class EmployeController {
 	@RequestMapping(value = "/employe/{id}", method = RequestMethod.GET)
 	public Employe getEmployeById(@PathVariable int id) {
 		return employeService.getEmployeByID(id);
-	}
+	} 
 	
 	@PutMapping("/employe/{id}")
 	public Employe editEmploye(@PathVariable int id, @RequestBody Employe employe) {

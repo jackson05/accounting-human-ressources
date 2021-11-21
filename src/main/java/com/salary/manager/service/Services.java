@@ -1,14 +1,9 @@
 package com.salary.manager.service;
-
-import javax.persistence.CascadeType;
+ 
 import javax.persistence.Entity; 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
- 
-
-import com.salary.manager.departement.Departement;
+import javax.persistence.Id; 
 
 
 @Entity
@@ -17,9 +12,8 @@ public class Services {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	
-	@ManyToOne(cascade=CascadeType.ALL, targetEntity=Departement.class)
-	private Departement departementService;
+	 
+	private int departementServiceId;
 	
 	private String designationServices;
 	private int userCreatedServices;
@@ -33,30 +27,31 @@ public class Services {
 	}
 
 
-	public Services(int id, String name, int userCreatedServices, int userModifiedServices, String dateCreatedServices,
-			String dateModifiedServices) {
+	public Services(Services services) {
 		super();
-		this.id = id;
-		this.designationServices = name;
-		this.userCreatedServices = userCreatedServices;
-		this.userModifiedServices = userModifiedServices;
-		this.dateCreatedServices = dateCreatedServices;
-		this.dateModifiedServices = dateModifiedServices;
+		this.id = services.getId();
+		this.designationServices = services.getDesignationServices();
+		this.userCreatedServices = services.getUserCreatedServices();
+		this.userModifiedServices = services.getUserModifiedServices();
+		this.dateCreatedServices = services.getDateCreatedServices();
+		this.dateModifiedServices = services.getDateModifiedServices();
+		this.departementServiceId = services.getDepartementServiceId();
 	}
 
 
 	public int getId() {
 		return id;
 	}
-
-
-	public Departement getDepartementService() {
-		return departementService;
+ 
+    
+	
+	public int getDepartementServiceId() {
+		return departementServiceId;
 	}
 
 
-	public void setDepartementService(Departement departementService) {
-		this.departementService = departementService;
+	public void setDepartementServiceId(int departementServiceId) {
+		this.departementServiceId = departementServiceId;
 	}
 
 

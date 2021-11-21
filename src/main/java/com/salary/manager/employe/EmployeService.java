@@ -11,6 +11,8 @@ public class EmployeService {
 	@Autowired
 	private EmployesRepository employesRepositorie;
 	
+	private EmployeBuckRepository employeBuckRepository;
+	
 	public Employe addEmploye(Employe employe) {
 		employesRepositorie.save(employe);
 		return employe;
@@ -38,16 +40,23 @@ public class EmployeService {
 	
 	public Employe updateEmploye(int id,Employe employe) {
 		Employe oldData = employesRepositorie.findById(id).orElse(null);
-//		buck up first
+//		buck up first 
+//		EmployeBuckup entity = new EmployeBuckup(0, oldData);
+//		System.out.println(entity);
+		String miseAjour = "MiseAjour";
+		employesRepositorie.createIntoBuckup(oldData.getAgenceId(), oldData.getAnneeNaissance(), 
+				oldData.getBanqueId(), oldData.getCategorieId(), oldData.getCompte(), oldData.getConjointFonction(), oldData.getDateCreated(), oldData.getDateEmbauche(), 
+				oldData.getDateModified(), oldData.getEmail(), oldData.getEtat(), oldData.getEtatCivile(), oldData.getFonctionId(), oldData.getGenre(), oldData.getId(), oldData.getLevelId(), oldData.getMatricule(), 
+				oldData.getMatriculeInss(), oldData.getNom(), oldData.getNombreDenfant(), oldData.getPrenom(), oldData.getSalaireDeBase(), oldData.getServiceId(), oldData.getTelephone(), 
+				oldData.getUserCreated(), oldData.getUserModified(), oldData.getVersion(), miseAjour);
 		oldData.setVersion(oldData.getVersion()+1);
-		oldData.setId(0);
-		employesRepositorie.insertIntoBuckup(oldData);
+//		oldData.setId(0);
 		
-		oldData.setAgence(employe.getAgence());
+		oldData.setAgenceId(employe.getAgenceId());
 		oldData.setAnneeNaissance(employe.getAnneeNaissance());
-		oldData.setBanque(employe.getBanque());
+		oldData.setBanqueId(employe.getBanqueId());
 		
-		oldData.setCategory(employe.getCategory());
+		oldData.setCategorieId(employe.getCategorieId());
 		oldData.setCompte(employe.getCompte());
 		oldData.setConjointFonction(employe.getConjointFonction());
 		
@@ -66,10 +75,10 @@ public class EmployeService {
 		
 		oldData.setNombreDenfant(employe.getNombreDenfant());
 		oldData.setSalaireDeBase(employe.getSalaireDeBase());
-		oldData.setLevel(employe.getLevel());
+		oldData.setLevelId(employe.getLevelId());
 		
-		oldData.setAgence(employe.getAgence());
-		oldData.setService(employe.getService());
+		oldData.setAgenceId(employe.getAgenceId());
+		oldData.setServiceId(employe.getServiceId());
 		oldData.setTelephone(employe.getTelephone());
 		oldData.setUserModified(employe.getUserModified());
 		
@@ -78,6 +87,16 @@ public class EmployeService {
 	}
 	
 	public void deleteEmploye(int id) {
+		Employe oldData = employesRepositorie.findById(id).orElse(null);
+//		buck up first 
+//		EmployeBuckup entity = new EmployeBuckup(0, oldData);
+//		System.out.println(entity);
+		String miseAjour = "Suppression";
+		employesRepositorie.createIntoBuckup(oldData.getAgenceId(), oldData.getAnneeNaissance(), 
+				oldData.getBanqueId(), oldData.getCategorieId(), oldData.getCompte(), oldData.getConjointFonction(), oldData.getDateCreated(), oldData.getDateEmbauche(), 
+				oldData.getDateModified(), oldData.getEmail(), oldData.getEtat(), oldData.getEtatCivile(), oldData.getFonctionId(), oldData.getGenre(), oldData.getId(), oldData.getLevelId(), oldData.getMatricule(), 
+				oldData.getMatriculeInss(), oldData.getNom(), oldData.getNombreDenfant(), oldData.getPrenom(), oldData.getSalaireDeBase(), oldData.getServiceId(), oldData.getTelephone(), 
+				oldData.getUserCreated(), oldData.getUserModified(), oldData.getVersion(), miseAjour);
 		employesRepositorie.deleteById(id);
 	}
 }

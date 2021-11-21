@@ -23,13 +23,12 @@ public class Employe {
 	private String matricule;
 	private String nom;
 	private String prenom;
-	private String anneeNaissance;
+	private int anneeNaissance;
 	
 	private String genre;
 	private String etatCivile;
-	
-	@ManyToOne(cascade=CascadeType.ALL, targetEntity=Level.class)
-	private Level level;
+	 
+	private int levelId;
 	private String conjointFonction;
 	
 	private String telephone;
@@ -38,133 +37,131 @@ public class Employe {
 	private int nombreDenfant;
 	
 	private float salaireDeBase;
+	 
+	private int serviceId;
+	private int fonctionId;
+	private int agenceId;
+	private int categorieId; 
+	private int banqueId;
 	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Services.class)
-	private Services service;
-	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Fonction.class)
-	private Fonction fonction;
-	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Agence.class)
-	private Agence agence;
-	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Categorie.class)
-	private int categorie;
-	
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Banque.class)
-	private Banque banque;
 	private String compte;
 	private String dateEmbauche;
-	private String dateCreated;
-	
+	private String dateCreated; 
 	private String dateModified;
 	private int userCreated;
-	private int userModified;
+	private int userModified; 
 	
 	@Column(name="version", columnDefinition="int(2) NOT NULL default '1'")
 	private int version;
 	
 	private int etat;
 
+
+	public Employe(Employe employee) {
+		super();
+		this.id = employee.getId();
+		this.matricule = employee.getMatricule();
+		this.nom = employee.getNom();
+		this.prenom = employee.getPrenom();
+		this.anneeNaissance = employee.getAnneeNaissance();
+		this.genre = employee.getGenre();
+		this.etatCivile = employee.getEtatCivile();
+		this.levelId = employee.getLevelId();
+		this.conjointFonction = employee.getConjointFonction();
+		this.telephone = employee.getTelephone();
+		this.email = employee.getEmail();
+		this.matriculeInss = employee.getMatriculeInss();
+		this.nombreDenfant = employee.getNombreDenfant();
+		this.salaireDeBase = employee.getSalaireDeBase();
+		this.serviceId = employee.getServiceId();
+		this.fonctionId = employee.getFonctionId();
+		this.agenceId = employee.getAgenceId();
+		this.categorieId = employee.getCategorieId();
+		this.banqueId = employee.getBanqueId();
+		this.compte = employee.getCompte();
+		this.dateEmbauche = employee.getDateEmbauche();
+		this.dateCreated = employee.getDateCreated();
+		this.dateModified = employee.getDateModified();
+		this.userCreated = employee.getUserCreated();
+		this.userModified = employee.getUserModified();
+		this.version = employee.getVersion();
+		this.etat = employee.getEtat();
+	}
+
+
 	public Employe() {
 		super();
 	}
 
-	public Employe(int id, String matricule, String nom, String prenom, String anneeNaissance, String genre,
-			String etatCivile, Level level, String conjointFonction, String telephone, String email,
-			String matriculeInss, int nombreDenfant, float salaireDeBase, Services service, Fonction fonction,
-			Agence agence, int category, Banque banque, String compte, String dateEmbauche, String dateCreated,
-			String dateModified, int userCreated, int userModified, int version, int etat) {
-		super();
-		this.id = id;
-		this.matricule = matricule;
-		this.nom = nom;
-		this.prenom = prenom;
+	
+	public int getLevelId() {
+		return levelId;
+	}
+
+
+	public void setLevelId(int levelID) {
+		this.levelId = levelID;
+	}
+
+
+	public int getServiceId() {
+		return serviceId;
+	}
+
+
+	public void setServiceId(int serviceId) {
+		this.serviceId = serviceId;
+	}
+
+
+	public int getFonctionId() {
+		return fonctionId;
+	}
+
+
+	public void setFonctionId(int fonctionId) {
+		this.fonctionId = fonctionId;
+	}
+
+
+	public int getAgenceId() {
+		return agenceId;
+	}
+
+
+	public void setAgenceId(int agenceId) {
+		this.agenceId = agenceId;
+	}
+
+
+	public int getCategorieId() {
+		return categorieId;
+	}
+
+
+	public void setCategorieId(int categorieId) {
+		this.categorieId = categorieId;
+	}
+
+
+	public int getBanqueId() {
+		return banqueId;
+	}
+
+
+	public void setBanqueId(int banqueId) {
+		this.banqueId = banqueId;
+	}
+
+
+	public void setAnneeNaissance(int anneeNaissance) {
 		this.anneeNaissance = anneeNaissance;
-		this.genre = genre;
-		this.etatCivile = etatCivile;
-		this.level = level;
-		this.conjointFonction = conjointFonction;
-		this.telephone = telephone;
-		this.email = email;
-		this.matriculeInss = matriculeInss;
-		this.nombreDenfant = nombreDenfant;
-		this.salaireDeBase = salaireDeBase;
-		this.service = service;
-		this.fonction = fonction;
-		this.agence = agence;
-		this.categorie = category;
-		this.banque = banque;
-		this.compte = compte;
-		this.dateEmbauche = dateEmbauche;
-		this.dateCreated = dateCreated;
-		this.dateModified = dateModified;
-		this.userCreated = userCreated;
-		this.userModified = userModified;
-		this.version = version;
-		this.etat = etat;
 	}
 
 
-	public Level getLevel() {
-		return level;
+	public int getAnneeNaissance() {
+		return anneeNaissance;
 	}
-
-
-	public void setLevel(Level level) {
-		this.level = level;
-	}
-
-
-	public Services getService() {
-		return service;
-	}
-
-
-	public void setService(Services service) {
-		this.service = service;
-	}
-
-
-	public Fonction getFonction() {
-		return fonction;
-	}
-
-
-	public void setFonction(Fonction fonction) {
-		this.fonction = fonction;
-	}
-
-
-	public Agence getAgence() {
-		return agence;
-	}
-
-
-	public void setAgence(Agence agence) {
-		this.agence = agence;
-	}
-
-
-	public int getCategory() {
-		return categorie;
-	}
-
-
-	public void setCategory(int category) {
-		this.categorie = category;
-	}
-
-
-	public Banque getBanque() {
-		return banque;
-	}
-
-
-	public void setBanque(Banque banque) {
-		this.banque = banque;
-	}
-
 
 	public int getId() {
 		return id;
@@ -198,13 +195,6 @@ public class Employe {
 		this.prenom = prenom;
 	}
 
-	public String getAnneeNaissance() {
-		return anneeNaissance;
-	}
-
-	public void setAnneeNaissance(String anneeNaissance) {
-		this.anneeNaissance = anneeNaissance;
-	}
 
 	public String getGenre() {
 		return genre;

@@ -9,12 +9,13 @@ import javax.persistence.Id;
 @Entity
 public class EmployeBuckup {
 	@Id()
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id_buckup;
 	private int id;
 	private String matricule;
 	private String nom;
 	private String prenom;
-	private String anneeNaissance;
+	private int anneeNaissance;
 	
 	private String genre;
 	private String etatCivile; 
@@ -32,7 +33,7 @@ public class EmployeBuckup {
 	private int serviceId;
 	private int fonctionId;
 	private int agenceId;
-	private int categoryId;
+	private int categorieId;
 	
 	private int banqueId;
 	private String compte;
@@ -42,6 +43,7 @@ public class EmployeBuckup {
 	private String dateModified;
 	private int userCreated;
 	private int userModified;
+	private String operation;
 	
 	@Column(name="version", columnDefinition="int(2) NOT NULL default '1'")
 	private int version;
@@ -54,39 +56,67 @@ public class EmployeBuckup {
 	}
 
 
-	public EmployeBuckup(int id, String matricule, String nom, String prenom, String anneeNaissance, String genre,
-			String etatCivile, int levelId, String conjointFonction, String telephone, String email,
-			String matriculeInss, int nombreDenfant, float salaireDeBase, int serviceId, int fonctionId, int agenceId,
-			int categoryId, int banque, String compte, String dateEmbauche, String dateCreated, String dateModified,
-			int userCreated, int userModified, int version, int etat) {
+	public EmployeBuckup(EmployeBuckup employebuck) {
 		super();
-		this.id = id;
-		this.matricule = matricule;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.anneeNaissance = anneeNaissance;
-		this.genre = genre;
-		this.etatCivile = etatCivile;
-		this.levelId = levelId;
-		this.conjointFonction = conjointFonction;
-		this.telephone = telephone;
-		this.email = email;
-		this.matriculeInss = matriculeInss;
-		this.nombreDenfant = nombreDenfant;
-		this.salaireDeBase = salaireDeBase;
-		this.serviceId = serviceId;
-		this.fonctionId = fonctionId;
-		this.agenceId = agenceId;
-		this.categoryId = categoryId;
-		this.banqueId = banque;
-		this.compte = compte;
-		this.dateEmbauche = dateEmbauche;
-		this.dateCreated = dateCreated;
-		this.dateModified = dateModified;
-		this.userCreated = userCreated;
-		this.userModified = userModified;
-		this.version = version;
-		this.etat = etat;
+		this.id_buckup = employebuck.getId_buckup();
+		this.id = employebuck.getId();
+		this.operation = employebuck.getOperation();
+		this.matricule = employebuck.getMatricule();
+		this.nom = employebuck.getNom();
+		this.prenom = employebuck.getPrenom();
+		this.anneeNaissance = employebuck.getAnneeNaissance();
+		this.genre = employebuck.getGenre();
+		this.etatCivile = employebuck.getEtatCivile();
+		this.levelId = employebuck.getLevelId();
+		this.conjointFonction = employebuck.getConjointFonction();
+		this.telephone = employebuck.getTelephone();
+		this.email = employebuck.getEmail();
+		this.matriculeInss = employebuck.getMatriculeInss();
+		this.nombreDenfant = employebuck.getNombreDenfant();
+		this.salaireDeBase = employebuck.getSalaireDeBase();
+		this.serviceId = employebuck.getServiceId();
+		this.fonctionId = employebuck.getFonctionId();
+		this.agenceId = employebuck.getAgenceId();
+		this.categorieId = employebuck.getCategorieId();
+		this.banqueId = employebuck.getBanqueId();
+		this.compte = employebuck.getCompte();
+		this.dateEmbauche = employebuck.getDateEmbauche();
+		this.dateCreated = employebuck.getDateCreated();
+		this.dateModified = employebuck.getDateModified();
+		this.userCreated = employebuck.getUserCreated();
+		this.userModified = employebuck.getUserModified();
+		this.version = employebuck.getVersion();
+		this.etat = employebuck.getEtat();
+	}
+
+
+	public int getId_buckup() {
+		return id_buckup;
+	}
+
+
+	public String getOperation() {
+		return operation;
+	}
+
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+
+	public void setId_buckup(int id_buckup) {
+		this.id_buckup = id_buckup;
+	}
+
+
+	public int getBanqueId() {
+		return banqueId;
+	}
+
+
+	public void setBanqueId(int banqueId) {
+		this.banqueId = banqueId;
 	}
 
 
@@ -129,16 +159,7 @@ public class EmployeBuckup {
 		this.agenceId = agenceId;
 	}
 
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
+ 
 
 	public int getBanque() {
 		return banqueId;
@@ -182,14 +203,27 @@ public class EmployeBuckup {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
-	public String getAnneeNaissance() {
+ 
+	
+	public int getAnneeNaissance() {
 		return anneeNaissance;
 	}
 
-	public void setAnneeNaissance(String anneeNaissance) {
+
+	public void setAnneeNaissance(int anneeNaissance) {
 		this.anneeNaissance = anneeNaissance;
 	}
+
+
+	public int getCategorieId() {
+		return categorieId;
+	}
+
+
+	public void setCategorieId(int categorieId) {
+		this.categorieId = categorieId;
+	}
+
 
 	public String getGenre() {
 		return genre;
