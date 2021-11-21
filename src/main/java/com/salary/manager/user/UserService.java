@@ -3,7 +3,9 @@ package com.salary.manager.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,17 +48,17 @@ public class UserService  implements UserDetailsService {
 	
 	
 	
-	private Collection<? extends GrantedAuthority>rolesToAuthorities(List<Role> roles)
+	private Collection<? extends GrantedAuthority>rolesToAuthorities(Set<Role> roles)
 	{
 		return roles.stream().map(role -> 
 		new SimpleGrantedAuthority(role.getRoleName()))
 				.collect(Collectors.toList());
 	}
 	
-	private List<Role>authorities;
+	private Set<Role>authorities;
 	
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		authorities=new ArrayList<>();
+		authorities=new HashSet<>();
 		return rolesToAuthorities(authorities);
 	}
 	

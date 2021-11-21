@@ -1,7 +1,7 @@
 package com.salary.manager.user.role;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class Role {
 	private String createdDate;
 	private String modifiedDate;
 
-	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinTable(
 			name="user_roles",
 			joinColumns = @JoinColumn(
@@ -46,7 +46,7 @@ public class Role {
 			
 			)
 	@JsonBackReference
-	private List<User> user=new ArrayList<>();
+	private Set<User> user=new HashSet<>();
 
 	public String getRoleName() {
 		return roleName;
@@ -68,11 +68,11 @@ public class Role {
 	public void setModifiedDate(String modifiedDate) {
 	}
 
-	public List<User> getUser() {
+	public Set<User> getUser() {
 		return user;
 	}
 
-	public void setUser(List<User> user) {
+	public void setUser(Set<User> user) {
 		this.user = user;
 	}
 

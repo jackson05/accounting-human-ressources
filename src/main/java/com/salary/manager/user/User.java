@@ -1,8 +1,8 @@
 package com.salary.manager.user;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class User {
 	private String expiredDate;
 	
 	@ManyToMany(fetch =FetchType.EAGER ,mappedBy= "user",cascade = CascadeType.ALL)
-	private List<Role> roles=new ArrayList<>();
+	private Set<Role> roles=new HashSet<>();
 	
 	public int getIdUser() {
 		return id;
@@ -104,11 +104,11 @@ public class User {
 	}
 	
 	
-	public List<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 	
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 }
