@@ -19,7 +19,7 @@ public class UserController {
 //	private AuthenticationManager authenticationManager;
 	
 	@Autowired
-	private UserService userDetailsService;
+	private UserService userService;
 	
 	@GetMapping("/hello")
 	public String hello() {
@@ -29,29 +29,35 @@ public class UserController {
 	
 	@PostMapping("/user/register")
 	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
-		return ResponseEntity.ok(userDetailsService.save(user));
+		return ResponseEntity.ok(userService.save(user));
 	}
 	
 	@PutMapping("/user")
 	public ResponseEntity<?> editUser(@RequestBody User user) throws Exception {
-		return ResponseEntity.ok(userDetailsService.save(user));
+		return ResponseEntity.ok(userService.save(user));
+	}
+	
+	
+	@GetMapping("/user/{username}")
+	public User getByUserName(@PathVariable String username){
+		return userService.getUserByUsername(username);
 	}
 	
 	@GetMapping("/users")
 	public List<User> getUsers(){
-		return userDetailsService.loadUsers();
+		return userService.loadUsers();
 	}
 	
 	@DeleteMapping("/user/delete/{user}")
 	public List<User> deleteUser(@PathVariable User user){
-		 userDetailsService.delete(user);
-		 return userDetailsService.loadUsers();
+		userService.delete(user);
+		 return userService.loadUsers();
 	}
 	
 	@DeleteMapping("/user/{id}")
 	public List<User> deleteUser(@PathVariable int id){
-		userDetailsService.deleteById(id);
-		return userDetailsService.loadUsers();
+		userService.deleteById(id);
+		return userService.loadUsers();
 	}
 	
 	
