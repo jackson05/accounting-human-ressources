@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -66,6 +67,7 @@ public class UserService  implements UserDetailsService {
  * SECTION DE GESTION DES CRUD POUR L'UTILISATEUR
  * ===================================================
  */
+	
 	public User save(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		return userRepo.save(user);
@@ -76,6 +78,14 @@ public class UserService  implements UserDetailsService {
 		userRepo.findAll().forEach(list::add);
 		 return list;
 		 
+	}
+	
+	public Optional<User> getUserById(int id) {
+		return	userRepo.findById(id);
+	}
+	
+	public User getUserByUsername(String userName) {
+		return	userRepo.findByUsername(userName);
 	}
 	
 	public void delete(User user) {
