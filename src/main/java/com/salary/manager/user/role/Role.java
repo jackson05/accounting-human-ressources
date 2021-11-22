@@ -4,11 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//
-//import com.salary.manager.test.model.DAOUser;
-//import com.salary.manager.user.User;
-
-//import com.salary.manager.test.model.User;
 
 @Entity
 public class Role {
