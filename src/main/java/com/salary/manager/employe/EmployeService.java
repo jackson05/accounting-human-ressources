@@ -43,7 +43,7 @@ public class EmployeService {
 //		buck up first 
 //		EmployeBuckup entity = new EmployeBuckup(0, oldData);
 //		System.out.println(entity);
-		String miseAjour = "MiseAjour";
+		String miseAjour = "Update";
 		employesRepositorie.createIntoBuckup(oldData.getAgenceId(), oldData.getAnneeNaissance(), 
 				oldData.getBanqueId(), oldData.getCategorieId(), oldData.getCompte(), oldData.getConjointFonction(), oldData.getDateCreated(), oldData.getDateEmbauche(), 
 				oldData.getDateModified(), oldData.getEmail(), oldData.getEtat(), oldData.getEtatCivile(), oldData.getFonctionId(), oldData.getGenre(), oldData.getId(), oldData.getLevelId(), oldData.getMatricule(), 
@@ -91,7 +91,7 @@ public class EmployeService {
 //		buck up first 
 //		EmployeBuckup entity = new EmployeBuckup(0, oldData);
 //		System.out.println(entity);
-		String miseAjour = "Suppression";
+		String miseAjour = "Delete";
 		employesRepositorie.createIntoBuckup(oldData.getAgenceId(), oldData.getAnneeNaissance(), 
 				oldData.getBanqueId(), oldData.getCategorieId(), oldData.getCompte(), oldData.getConjointFonction(), oldData.getDateCreated(), oldData.getDateEmbauche(), 
 				oldData.getDateModified(), oldData.getEmail(), oldData.getEtat(), oldData.getEtatCivile(), oldData.getFonctionId(), oldData.getGenre(), oldData.getId(), oldData.getLevelId(), oldData.getMatricule(), 
