@@ -108,21 +108,21 @@ public class UserService  implements UserDetailsService {
 	}
 	
 	
-	public Optional<User> addUserAndRoles(User user,Set<Role> role) {
-		SessionFactory sf=  new Configuration().configure().buildSessionFactory();  
-		Session session = sf.openSession();
-		session.beginTransaction();
-		for(Role r:role) {
+	public Optional<User> addUserAndRoles(User user/* ,Set<Role> role */) {
+//		SessionFactory sf=  new Configuration().configure().buildSessionFactory();  
+//		Session session = sf.openSession();
+//		session.beginTransaction();
+		for(Role r:user.getRoles()) {
 			saveUserRole(r.getId(), user.getIdUser());
 		}
-		session.getTransaction().commit();
+//		session.getTransaction().commit();
 		
 		return  userRepo.findById(user.getIdUser());
 	}
 	
-	@Query("insert into user_roles(role_id,user_id) values(?,?)")
+//	@Query("insert into user_roles(role_id,user_id) values(?,?)")
 	public void saveUserRole(int roleId,int userId ) {
-		
+		System.out.println("role Id=> "+roleId+" and user id => "+userId);
 	}
 	
 
