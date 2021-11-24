@@ -9,7 +9,11 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -70,6 +74,7 @@ public class UserService  implements UserDetailsService {
 	
 	public User save(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRoles(user.getRoles());
 		return userRepo.save(user);
 	}
 	
@@ -102,9 +107,22 @@ public class UserService  implements UserDetailsService {
 		return users;
 	}
 	
-//	@Query("insert into user_roles values(role_id,user_id)")
+	
 	public Optional<User> addUserAndRoles(User user,Set<Role> role) {
+		SessionFactory sf=  new Configuration().configure().buildSessionFactory();  
+		Session session = sf.openSession();
+		session.beginTransaction();
+		for(Role r:role) {
+			saveUserRole(r.getId(), user.getIdUser());
+		}
+		session.getTransaction().commit();
+		
 		return  userRepo.findById(user.getIdUser());
+	}
+	
+	@Query("insert into user_roles(role_id,user_id) values(?,?)")
+	public void saveUserRole(int roleId,int userId ) {
+		
 	}
 	
 
