@@ -28,12 +28,12 @@ public class Role {
 	@JoinTable(
 			name="user_roles",
 			joinColumns = @JoinColumn(
-					name="role_id"
+					name="user_id"
 					,
 					referencedColumnName = "id"
 					),
 			inverseJoinColumns = @JoinColumn(
-					name="user_id"
+					name="role_id"
 					,
 					referencedColumnName="id"
 					)
