@@ -102,8 +102,10 @@ public class UserService  implements UserDetailsService {
 		return users;
 	}
 	
-	
-	
+//	@Query("insert into user_roles values(role_id,user_id)")
+	public Optional<User> addUserAndRoles(User user,Set<Role> role) {
+		return  userRepo.findById(user.getIdUser());
+	}
 	
 
 }
