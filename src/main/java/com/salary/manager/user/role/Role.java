@@ -1,9 +1,19 @@
 package com.salary.manager.user.role;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import com.salary.manager.user.User;
 
 @Entity
 public class Role {
@@ -14,23 +24,23 @@ public class Role {
 	private String createdDate;
 	private String modifiedDate;
 
-//	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//	@JoinTable(
-//			name="user_roles",
-//			joinColumns = @JoinColumn(
-//					name="role_id"
-//					,
-//					referencedColumnName = "id"
-//					),
-//			inverseJoinColumns = @JoinColumn(
-//					name="user_id"
-//					,
-//					referencedColumnName="id"
-//					)
-//			
-//			)
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinTable(
+			name="user_roles",
+			joinColumns = @JoinColumn(
+					name="role_id"
+					,
+					referencedColumnName = "id"
+					),
+			inverseJoinColumns = @JoinColumn(
+					name="user_id"
+					,
+					referencedColumnName="id"
+					)
+			
+			)
 //	@JsonBackReference
-//	private Set<User> user=new HashSet<>();
+	private Set<User> user=new HashSet<>();
 
 	public int getId() {
 		return id;
