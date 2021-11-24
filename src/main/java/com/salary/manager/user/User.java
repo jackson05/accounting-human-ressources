@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.salary.manager.user.role.Role;
@@ -29,7 +31,22 @@ public class User {
 	private String lastAcces;
 	private String expiredDate;
 	
-	@ManyToMany(fetch =FetchType.EAGER ,mappedBy= "user",cascade = CascadeType.ALL)
+//	@ManyToMany(fetch =FetchType.EAGER ,mappedBy= "user",cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinTable(
+			name="user_roles",
+			joinColumns = @JoinColumn(
+					name="role_id"
+					,
+					referencedColumnName = "id"
+					),
+			inverseJoinColumns = @JoinColumn(
+					name="user_id"
+					,
+					referencedColumnName="id"
+					)
+			
+			)
 	private Set<Role> roles=new HashSet<>();
 	
 	public int getIdUser() {
