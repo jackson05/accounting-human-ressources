@@ -35,12 +35,13 @@ public class SalaireService {
 	
 	public Salaire updateSalaire(int id, Salaire nouveau) {
 		Salaire oldSalaire = salaireRepository.findById(id).orElse(null);
-		salaireRepository.InsertBuckUPsalaire(
-				oldSalaire.getAutrePension(), oldSalaire.getContributionSocial(), oldSalaire.getCreatedBySalaire(), 
-				oldSalaire.getCreatedDateSalaire(), oldSalaire.getEmployeeIdInSalaire(), oldSalaire.getHeureParJour(), 
-				oldSalaire.getIndeminiteTransport(), oldSalaire.getJourParMois(), oldSalaire.getJoursOuvrable(), oldSalaire.getModifiedBySalaire(), 
-				oldSalaire.getModifiedDateSalaire(), oldSalaire.getSalaireDeBase(), oldSalaire.getSalaireId(), oldSalaire.getSalaireNet(), 
-				oldSalaire.getStatusSalarie(), oldSalaire.getTypePaiment(), oldSalaire.getVersion());
+			salaireRepository.InsertBuckUPsalaire(
+			oldSalaire.getAutrePension(), oldSalaire.getContributionSocial(), oldSalaire.getCreatedBySalaire(), 
+			oldSalaire.getCreatedDateSalaire(), oldSalaire.getEmployeeIdInSalaire(), oldSalaire.getHeureParJour(), 
+			oldSalaire.getIndeminiteTransport(), oldSalaire.getJourParMois(), oldSalaire.getJoursOuvrable(), oldSalaire.getModifiedBySalaire(), 
+			oldSalaire.getModifiedDateSalaire(), oldSalaire.getSalaireDeBase(), oldSalaire.getSalaireId(), oldSalaire.getSalaireNet(), 
+			oldSalaire.getStatusSalarie(), oldSalaire.getTypePaiment(), oldSalaire.getVersion(),"Update"
+		);
 		
 		oldSalaire.setEmployeeIdInSalaire(nouveau.getEmployeeIdInSalaire());
 		oldSalaire.setSalaireDeBase(nouveau.getSalaireDeBase());
@@ -55,6 +56,7 @@ public class SalaireService {
 		oldSalaire.setTypePaiment(nouveau.getTypePaiment()); 
 		oldSalaire.setModifiedDateSalaire(nouveau.getModifiedDateSalaire());
 		oldSalaire.setModifiedBySalaire(nouveau.getModifiedBySalaire());
+		oldSalaire.setVersion(oldSalaire.getVersion()+1);
 		salaireRepository.save(oldSalaire);
 		return oldSalaire;
 	}
@@ -67,7 +69,7 @@ public class SalaireService {
 				oldSalaire.getCreatedDateSalaire(), oldSalaire.getEmployeeIdInSalaire(), oldSalaire.getHeureParJour(), 
 				oldSalaire.getIndeminiteTransport(), oldSalaire.getJourParMois(), oldSalaire.getJoursOuvrable(), oldSalaire.getModifiedBySalaire(), 
 				oldSalaire.getModifiedDateSalaire(), oldSalaire.getSalaireDeBase(), oldSalaire.getSalaireId(), oldSalaire.getSalaireNet(), 
-				oldSalaire.getStatusSalarie(), oldSalaire.getTypePaiment(), oldSalaire.getVersion());
+				oldSalaire.getStatusSalarie(), oldSalaire.getTypePaiment(), oldSalaire.getVersion(),"Delete");
 		salaireRepository.deleteById(id);
 	}
 	
@@ -80,7 +82,8 @@ public class SalaireService {
 					oldSalaire.getCreatedDateSalaire(), oldSalaire.getEmployeeIdInSalaire(), oldSalaire.getHeureParJour(), 
 					oldSalaire.getIndeminiteTransport(), oldSalaire.getJourParMois(), oldSalaire.getJoursOuvrable(), oldSalaire.getModifiedBySalaire(), 
 					oldSalaire.getModifiedDateSalaire(), oldSalaire.getSalaireDeBase(), oldSalaire.getSalaireId(), oldSalaire.getSalaireNet(), 
-					oldSalaire.getStatusSalarie(), oldSalaire.getTypePaiment(), oldSalaire.getVersion());
+					oldSalaire.getStatusSalarie(), oldSalaire.getTypePaiment(), oldSalaire.getVersion(),"Delete"
+			  );
 		}
        
 		salaireRepository.deleteAllById(ids);

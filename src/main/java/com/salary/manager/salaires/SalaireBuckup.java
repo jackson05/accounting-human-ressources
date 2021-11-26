@@ -28,6 +28,7 @@ public class SalaireBuckup {
 	private int createdBySalaire ;
 	private String modifiedDateSalaire ;
 	private int modifiedBySalaire ;
+	private String operation;
 	
 	@Column(name="version", columnDefinition="int(2) NOT NULL default '1'")
 	private int version;
@@ -55,6 +56,14 @@ public class SalaireBuckup {
 		this.modifiedDateSalaire = salaire.getModifiedDateSalaire();
 		this.modifiedBySalaire = salaire.getModifiedBySalaire();
 		this.version = salaire.getVersion();
+		this.operation = salaire.getOperation();
+	}
+	
+	public String getOperation() {
+		return operation;
+	}
+	public void setOperation(String operation) {
+		this.operation = operation;
 	}
 	public int getSalaireBuckupId() {
 		return salaireBuckupId;
