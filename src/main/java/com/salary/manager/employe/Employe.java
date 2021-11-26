@@ -54,6 +54,7 @@ public class Employe {
 	@Column(name="version", columnDefinition="int(2) NOT NULL default '1'")
 	private int version;
 	
+	@Column(name="etat", columnDefinition="int(2) NOT NULL default '0' COMMENT '0 ACTIF , 1 MISE A PIED' ")
 	private int etat;
 
 

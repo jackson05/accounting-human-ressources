@@ -42,4 +42,9 @@ public class EmployeController {
 	public void deleteEmploye(@PathVariable int id) {
 		employeService.deleteEmploye(id);
 	}
+	
+	@RequestMapping("/employe/mp/{id}")
+	public Employe miseApied(int idEmploye) {
+		return employeService.miseApiedEmploye(idEmploye);
+	}
 }

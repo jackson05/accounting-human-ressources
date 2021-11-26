@@ -89,8 +89,6 @@ public class EmployeService {
 	public void deleteEmploye(int id) {
 		Employe oldData = employesRepositorie.findById(id).orElse(null);
 //		buck up first 
-//		EmployeBuckup entity = new EmployeBuckup(0, oldData);
-//		System.out.println(entity);
 		String miseAjour = "Delete";
 		employesRepositorie.createIntoBuckup(oldData.getAgenceId(), oldData.getAnneeNaissance(), 
 				oldData.getBanqueId(), oldData.getCategorieId(), oldData.getCompte(), oldData.getConjointFonction(), oldData.getDateCreated(), oldData.getDateEmbauche(), 
@@ -98,5 +96,16 @@ public class EmployeService {
 				oldData.getMatriculeInss(), oldData.getNom(), oldData.getNombreDenfant(), oldData.getPrenom(), oldData.getSalaireDeBase(), oldData.getServiceId(), oldData.getTelephone(), 
 				oldData.getUserCreated(), oldData.getUserModified(), oldData.getVersion(), miseAjour);
 		employesRepositorie.deleteById(id);
+	}
+	
+	public Employe miseApiedEmploye(int idEmploye) {
+		Employe oldData = employesRepositorie.findById(idEmploye).orElse(null);
+		employesRepositorie.createIntoBuckup(oldData.getAgenceId(), oldData.getAnneeNaissance(), 
+				oldData.getBanqueId(), oldData.getCategorieId(), oldData.getCompte(), oldData.getConjointFonction(), oldData.getDateCreated(), oldData.getDateEmbauche(), 
+				oldData.getDateModified(), oldData.getEmail(), oldData.getEtat(), oldData.getEtatCivile(), oldData.getFonctionId(), oldData.getGenre(), oldData.getId(), oldData.getLevelId(), oldData.getMatricule(), 
+				oldData.getMatriculeInss(), oldData.getNom(), oldData.getNombreDenfant(), oldData.getPrenom(), oldData.getSalaireDeBase(), oldData.getServiceId(), oldData.getTelephone(), 
+				oldData.getUserCreated(), oldData.getUserModified(), oldData.getVersion(), "Mise a pied");
+		  oldData.setEtat(1);
+		return employesRepositorie.save(oldData);
 	}
 }
