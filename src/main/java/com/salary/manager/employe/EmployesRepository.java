@@ -37,7 +37,13 @@ public interface EmployesRepository extends JpaRepository<Employe, Integer> {
 			@Param("prenom") String prenom, @Param("salaire_de_base") float salaireDeBase, @Param("service_id") int serviceId, @Param("telephone") String telephone, @Param("user_created") int userCreated, 
 			@Param("user_modified") int userModified, @Param("version") int version, @Param("operation") String operation);
 	
-	@Query(value = "SELECT * FROM empoye WHERE anneeNaissance >= :anneeNaissance", nativeQuery = true)
+	@Query(value = "SELECT * FROM employe WHERE anneeNaissance >= :anneeNaissance", nativeQuery = true)
 	List<Employe> getAnneeLimite(@Param("anneeNaissance") int anneeLimit);
+	
+	@Query(value = "SELECT * FROM employe WHERE etat = 1", nativeQuery = true)
+	List<Employe> getListeMiseApied();
+	
+	@Query(value = "SELECT * FROM employe WHERE etat = 0", nativeQuery = true)
+	List<Employe> getListeActifs();
 
 }

@@ -1,5 +1,6 @@
 package com.salary.manager.employe;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,7 @@ public class EmployeService {
 	
 	@Autowired
 	private EmployesRepository employesRepositorie;
-	
-	private EmployeBuckRepository employeBuckRepository;
-	
+	 
 	public Employe addEmploye(Employe employe) {
 		employesRepositorie.save(employe);
 		return employe;
@@ -24,6 +23,14 @@ public class EmployeService {
 	
 	public List<Employe> getAllEmploye(){
 		return employesRepositorie.findAll();
+	}
+	
+	public List<Employe> listeActifs(){
+		return employesRepositorie.getListeActifs();
+	}
+	
+	public List<Employe> listMiseApied(){
+		return employesRepositorie.getListeMiseApied();
 	}
 	
 	public Employe getEmployeByID(int id) {
@@ -98,6 +105,20 @@ public class EmployeService {
 		employesRepositorie.deleteById(id);
 	}
 	
+	public void deleteListEmploye(List<Integer>ids) {
+		List<Employe> employes = employesRepositorie.findAllById(ids);
+		for (Iterator iterator = employes.iterator(); iterator.hasNext();) {
+			Employe employe = (Employe) iterator.next();
+			String miseAjour = "Delete";
+			employesRepositorie.createIntoBuckup(employe.getAgenceId(), employe.getAnneeNaissance(), 
+					employe.getBanqueId(), employe.getCategorieId(), employe.getCompte(), employe.getConjointFonction(), employe.getDateCreated(), employe.getDateEmbauche(), 
+					employe.getDateModified(), employe.getEmail(), employe.getEtat(), employe.getEtatCivile(), employe.getFonctionId(), employe.getGenre(), employe.getId(), employe.getLevelId(), employe.getMatricule(), 
+					employe.getMatriculeInss(), employe.getNom(), employe.getNombreDenfant(), employe.getPrenom(), employe.getSalaireDeBase(), employe.getServiceId(), employe.getTelephone(), 
+					employe.getUserCreated(), employe.getUserModified(), employe.getVersion(), miseAjour);
+		}
+		employesRepositorie.deleteAllById(ids);
+	}
+	
 	public Employe miseApiedEmploye(int idEmploye) {
 		Employe oldData = employesRepositorie.findById(idEmploye).orElse(null);
 		employesRepositorie.createIntoBuckup(oldData.getAgenceId(), oldData.getAnneeNaissance(), 
@@ -108,4 +129,6 @@ public class EmployeService {
 		  oldData.setEtat(1);
 		return employesRepositorie.save(oldData);
 	}
+	
+	
 }

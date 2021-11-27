@@ -28,6 +28,16 @@ public class EmployeController {
 		return employeService.getEmployeByID(id);
 	} 
 	
+	@RequestMapping(value = "/employeActifs", method = RequestMethod.GET)
+	public List<Employe> getListEmployeActif(){
+		return employeService.listeActifs();
+	}
+	
+	@RequestMapping(value = "/employeMiseApied", method = RequestMethod.GET)
+	public List<Employe> getListMiseApied(){
+		return employeService.listMiseApied();
+	}
+	
 	@PutMapping("/employe/{id}")
 	public Employe editEmploye(@PathVariable int id, @RequestBody Employe employe) {
 		return employeService.updateEmploye(id, employe);
@@ -43,8 +53,13 @@ public class EmployeController {
 		employeService.deleteEmploye(id);
 	}
 	
+	@RequestMapping(value = "/employe", method = RequestMethod.DELETE)
+	public void deleteListEmploye(List<Integer> ids) {
+		employeService.deleteListEmploye(ids);
+	}
+	
 	@RequestMapping("/employe/mp/{id}")
-	public Employe miseApied(int idEmploye) {
-		return employeService.miseApiedEmploye(idEmploye);
+	public Employe miseApied(@PathVariable int id) {
+		return employeService.miseApiedEmploye(id);
 	}
 }
