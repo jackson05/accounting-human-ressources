@@ -107,7 +107,7 @@ public class EmployeService {
 	
 	public void deleteListEmploye(List<Integer>ids) {
 		List<Employe> employes = employesRepositorie.findAllById(ids);
-		for (Iterator iterator = employes.iterator(); iterator.hasNext();) {
+		for (Iterator<Employe> iterator = employes.iterator(); iterator.hasNext();) {
 			Employe employe = (Employe) iterator.next();
 			String miseAjour = "Delete";
 			employesRepositorie.createIntoBuckup(employe.getAgenceId(), employe.getAnneeNaissance(), 
