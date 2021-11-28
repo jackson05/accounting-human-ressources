@@ -1,19 +1,10 @@
 package com.salary.manager.employe;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id; 
-import javax.persistence.ManyToOne;
-
-import com.salary.manager.agences.Agence;
-import com.salary.manager.banque.Banque;
-import com.salary.manager.categorie.Categorie;
-import com.salary.manager.fonction.Fonction;
-import com.salary.manager.level.Level;
-import com.salary.manager.service.Services;
 
 @Entity() 
 public class Employe {
