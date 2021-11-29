@@ -1,5 +1,4 @@
-
-  package com.salary.manager.user;
+package com.salary.manager.user;
 
 import java.util.List;
 import java.util.Optional;
