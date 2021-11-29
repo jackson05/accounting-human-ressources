@@ -37,11 +37,11 @@ public class EmployeService {
 //		buck up first
 		employesRepositorie.insertIntoBuckup(oldData);
 		
-		oldData.setAgenceId(employe.getAgenceId());
+//		oldData.setAgenceId(employe.getAgenceId());
 		oldData.setAnneeNaissance(employe.getAnneeNaissance());
-		oldData.setBanqueId(employe.getBanqueId());
-		
-		oldData.setCategoryId(employe.getCategoryId());
+//		oldData.setBanqueId(employe.getBanqueId());
+//		
+//		oldData.setCategoryId(employe.getCategoryId());
 		oldData.setCompte(employe.getCompte());
 		oldData.setConjointFonction(employe.getConjointFonction());
 		
@@ -60,10 +60,10 @@ public class EmployeService {
 		
 		oldData.setNombreDenfant(employe.getNombreDenfant());
 		oldData.setSalaireDeBase(employe.getSalaireDeBase());
-		oldData.setLevelId(employe.getLevelId());
-		
-		oldData.setAgenceId(employe.getAgenceId());
-		oldData.setServiceId(employe.getServiceId());
+//		oldData.setLevelId(employe.getLevelId());
+//		
+//		oldData.setAgenceId(employe.getAgenceId());
+//		oldData.setServiceId(employe.getServiceId());
 		oldData.setTelephone(employe.getTelephone());
 		oldData.setUserModified(employe.getUserModified());
 		

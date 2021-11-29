@@ -46,11 +46,7 @@ public class DepartementService {
     public void deleteDepartement (int id) {
     	departementsRepository.deleteById(id);
     }
-    
-<<<<<<< HEAD
-    
-=======
->>>>>>> f5c01fe66a011d838b02d5a4ca0654f295acb2d7
+
     /*
      * custom query of update
      * 1er etapes creation de l'objet EntityManager
@@ -67,15 +63,11 @@ public class DepartementService {
     		.setParameter(5, departement.getUserModifiedDepartement())
     		.setParameter(6, departement.getId())
     		.executeUpdate();
-<<<<<<< HEAD
     	
-//    	Departement departement=new Departement();
     	return departement;
     }
-=======
+
     	 
-    	return departement;
-    }
     
     public Departement miseAjour(int id, Departement des) {
     	System.out.println("--"+des.getDesignationDepartment());
@@ -86,7 +78,7 @@ public class DepartementService {
     public List<Departement> getDep(int id) { 
     	return departementsRepository.selectDepId(id);
     }
->>>>>>> f5c01fe66a011d838b02d5a4ca0654f295acb2d7
+
 }
 
 
