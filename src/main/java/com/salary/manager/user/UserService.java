@@ -1,4 +1,6 @@
+
 package com.salary.manager.user;
+
 
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import com.salary.manager.user.role.Role;
@@ -72,12 +75,7 @@ public class UserService /* implements UserDetailsService */{
  * SECTION DE GESTION DES CRUD POUR L'UTILISATEUR
  * ===================================================
  */
-	
-/*
- * public User save(User user) {
- * user.setPassword(passwordEncoder.encode(user.getPassword()));
- * user.setRoles(user.getRoles()); return userRepo.save(user); }
- */
+
 	
 	public List<User> getUsers() {
 		List<User> list=new ArrayList<>();
@@ -122,6 +120,4 @@ public class UserService /* implements UserDetailsService */{
 	}
 	
 	
-	
-
 }
