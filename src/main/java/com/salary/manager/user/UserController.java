@@ -28,16 +28,16 @@ public class UserController {
 		return "hello world";
 	}
 	
-	@PostMapping("/user/register")
-	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
-		return ResponseEntity.ok(userService.save(user));
-	}
-	
-	@PutMapping("/user")
-	public ResponseEntity<?> editUser(@RequestBody User user) throws Exception {
-		return ResponseEntity.ok(userService.save(user));
-	}
-	
+//	@PostMapping("/user/register")
+//	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
+//		return ResponseEntity.ok(userService.save(user));
+//	}
+//	
+//	@PutMapping("/user")
+//	public ResponseEntity<?> editUser(@RequestBody User user) throws Exception {
+//		return ResponseEntity.ok(userService.save(user));
+//	}
+//	
 	
 	@GetMapping("/user/{username}")
 	public User getByUserName(@PathVariable String username){
