@@ -1,4 +1,4 @@
-package com.salary.manager.employee.salary.conf;
+package com.salary.manager.employee.salary.partition;
 
 import java.util.Date;
 

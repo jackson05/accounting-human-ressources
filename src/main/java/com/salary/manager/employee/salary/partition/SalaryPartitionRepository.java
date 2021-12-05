@@ -1,4 +1,4 @@
-package com.salary.manager.employee.salary.conf;
+package com.salary.manager.employee.salary.partition;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
