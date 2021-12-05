@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class SalaryConfiguration {
+public class SalaryPartition{
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;

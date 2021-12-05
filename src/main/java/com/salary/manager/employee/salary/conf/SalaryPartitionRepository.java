@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SalaryConfigurationRepository extends 
-				JpaRepository<SalaryConfiguration, Long> {
+public interface SalaryPartitionRepository extends 
+				JpaRepository<SalaryPartition, Long> {
 
 	
 }
