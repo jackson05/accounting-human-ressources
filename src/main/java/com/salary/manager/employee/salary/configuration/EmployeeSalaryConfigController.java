@@ -20,11 +20,9 @@ public class EmployeeSalaryConfigController {
 		return employeeSalaryConfigService.save(employeeSalaryConfig);
 	}
 	
-	@GetMapping("/salary/configuration")
+	@GetMapping("/salary/configurations")
 	public List<EmployeeSalaryConfig> loadEmployeeSalaryConfig(){
 		return employeeSalaryConfigService.loadEmployeeSalaryConfig();
 	}
-	
-	
 
 }
