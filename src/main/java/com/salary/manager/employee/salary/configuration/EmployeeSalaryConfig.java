@@ -63,7 +63,7 @@ public class EmployeeSalaryConfig {
 	private Date createdDate;
 	private Date modifiedDate;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Employe> employee;
 	
 }
