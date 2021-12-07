@@ -42,6 +42,14 @@ public class SalaryPartition{
 	public void setPourcentage(int pourcentage) {
 		this.pourcentage = pourcentage;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	public Date getCreatedDate() {
 		return createdDate;
 	}
@@ -58,6 +66,7 @@ public class SalaryPartition{
 	private String description;
 	private String type;
 	private int pourcentage;
+	private String status;
 	private Date createdDate;
 	private Date modifiedDate;
 	
