@@ -1,4 +1,4 @@
-package com.salary.manager.employee.salary.configuration;
+package com.salary.manager.employee.salaryconfig;
 
 import java.util.List;
 import java.util.Optional;

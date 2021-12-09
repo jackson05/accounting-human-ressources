@@ -1,4 +1,4 @@
-package com.salary.manager.employee.salary.configuration;
+package com.salary.manager.employee.salaryconfig;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class SalaryConfigController {
 		return salaryConfigService.save(salaryConfig);
 	}
 	
-	@GetMapping("/salary/configurations")
+	@GetMapping("/salary/configuration")
 	public List<SalaryConfig> loadSalaryConfig(){
 		return salaryConfigService.loadSalaryConfig();
 	}

@@ -1,4 +1,4 @@
-package com.salary.manager.employee.salary.configuration;
+package com.salary.manager.employee.salaryconfig;
 
 import java.util.Date;
 import java.util.Set;
