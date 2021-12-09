@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SalaryConfigurationController {
+public class SalaryPartitionController {
 
 	@Autowired
 	private SalaryPartitionService salaryPartitionservice;
