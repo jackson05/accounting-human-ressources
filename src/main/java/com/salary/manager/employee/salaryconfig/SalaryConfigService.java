@@ -24,6 +24,10 @@ public class SalaryConfigService {
 		return salaryConfigRep.findById(id);
 	}
 	
+	public void deleteSalaryConfigById(long id) {
+		salaryConfigRep.deleteById(id);
+	}
+	
 	public SalaryConfig hide(SalaryConfig salaryConfig){
 		return null;
 	}
