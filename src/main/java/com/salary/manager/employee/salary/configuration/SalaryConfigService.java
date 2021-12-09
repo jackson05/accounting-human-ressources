@@ -1,6 +1,7 @@
 package com.salary.manager.employee.salary.configuration;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,12 @@ public class SalaryConfigService {
 	public List<SalaryConfig> loadSalaryConfig() {
 		return salaryConfigRep.findAll();
 	}
-
-	public SalaryConfig makeStoped(SalaryConfig salaryConfig){
+	
+	public Optional<SalaryConfig> findById(long id) {
+		return salaryConfigRep.findById(id);
+	}
+	
+	public SalaryConfig hide(SalaryConfig salaryConfig){
 		return null;
 	}
 
