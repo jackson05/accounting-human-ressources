@@ -9,20 +9,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class EmployeeSalaryConfigController {
+public class SalaryConfigController {
 	
 	@Autowired
-	private EmployeeSalaryConfigService employeeSalaryConfigService;
+	private SalaryConfigService salaryConfigService;
 	
 	@PostMapping("/salary/configuration")
-	public EmployeeSalaryConfig 
-		saveEmployeeSalaryConfig(@RequestBody EmployeeSalaryConfig employeeSalaryConfig) {
-		return employeeSalaryConfigService.save(employeeSalaryConfig);
+	public SalaryConfig 
+		saveEmployeeSalaryConfig(@RequestBody SalaryConfig salaryConfig) {
+		return salaryConfigService.save(salaryConfig);
 	}
 	
 	@GetMapping("/salary/configurations")
-	public List<EmployeeSalaryConfig> loadEmployeeSalaryConfig(){
-		return employeeSalaryConfigService.loadEmployeeSalaryConfig();
+	public List<SalaryConfig> loadSalaryConfig(){
+		return salaryConfigService.loadSalaryConfig();
 	}
 
+	
 }
