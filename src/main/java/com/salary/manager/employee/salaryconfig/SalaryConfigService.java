@@ -24,6 +24,10 @@ public class SalaryConfigService {
 		return salaryConfigRep.findById(id);
 	}
 	
+	public List<SalaryConfig>  findByStoped(boolean isStoped) {
+		return salaryConfigRep.findByStoped(isStoped);
+	}
+	
 	public void deleteSalaryConfigById(long id) {
 		salaryConfigRep.deleteById(id);
 	}
