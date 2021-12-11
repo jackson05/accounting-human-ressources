@@ -27,6 +27,11 @@ public class SalaryConfigController {
 		return salaryConfigService.loadSalaryConfig();
 	}
 	
+	@GetMapping("/salary/configuration/status/{isStoped}")
+	public List<SalaryConfig> loadByStatus(@PathVariable boolean isStoped){
+		return salaryConfigService.findByStoped(isStoped);
+	}
+	
 	@DeleteMapping("/salary/configuration/{id}")
 	public void deleteSalaryConfig(@PathVariable long id){
 		salaryConfigService.deleteSalaryConfigById(id);
