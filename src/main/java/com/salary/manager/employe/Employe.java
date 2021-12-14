@@ -55,11 +55,11 @@ public class Employe {
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Agence agence;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Categorie categorie; 
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Banque banque;
 	
